@@ -49,4 +49,4 @@ This will have several benefits:
 ### Stretch goals
 - Functional payment page
 - A multi-functional search bar which allows sorting by price, date of upload, and/or color
-- 
+- blah blah blah defglnjerngperaporejnpoejrmg;lkmgwelfwe;g
