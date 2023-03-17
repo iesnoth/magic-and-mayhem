@@ -37,16 +37,26 @@ This will have several benefits:
 2. Buyers will gain access to a special board on the site which allows them to post how they are using the characters they bought.
     - This gives inspiration to other buyers, and is free advertising for those who use the designs in creative exploits.
 
-## Features
+### Features
 
 - Encrypted passwords for log-ins
 - Roles based on whether the client is a customer and/or artist
 - My account page for viewing bought pets.
 - Artist's account page, which includes pets they've put up for sale.
-- 
 
+### Technologies
+- VSCode
+- React
+- PostgresSQL
+- Express
+- Node.js
+- bcrypt
 
 ### Stretch goals
 - Functional payment page
 - A multi-functional search bar which allows sorting by price, date of upload, and/or color
-- blah blah blah defglnjerngperaporejnpoejrmg;lkmgwelfwe;g
+- pay page
+
+### Contributors
+
+### Citations
