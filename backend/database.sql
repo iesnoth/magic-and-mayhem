@@ -1,6 +1,6 @@
-CREATE DATABASE dragons;
+CREATE DATABASE magic_mayhem;
 
-CREATE TABLE for adoption(
-    dragon_id SERIAL PRIMARY KEY,
-    description VARCHAR(2000)
+CREATE TABLE users(
+    user_id UUID NOT NULL PRIMARY KEY,
+    name VARCHAR(50) NOT NULL
 );
