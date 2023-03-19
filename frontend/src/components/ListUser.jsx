@@ -1,5 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 import EditUser from "./EditUser";
+import Button from '@mui/material/Button';
 
 const ListUser = () => {
 
@@ -8,7 +9,7 @@ const ListUser = () => {
     //deletes users
     const deleteUser = async (id) => {
         try {
-            const deleteOne = await fetch(`http://localhost:5000/users/${id}`, {
+            await fetch(`http://localhost:5000/users/${id}`, {
                 method: "DELETE"
             });
             //deletes in view when deleted from db
@@ -41,8 +42,8 @@ const ListUser = () => {
                 {names.map(user => {
                     return (<div key={user.user_id}>
                         <li>{user.name}</li>
-                        <button> <EditUser/> </button>
-                        <button onClick={() => deleteUser(user.user_id)}>Delete </button>
+                        <Button sx={{ m: 4}} variant="contained" color="success"> <EditUser/> </Button>
+                        <Button variant="contained" color="error" onClick={() => deleteUser(user.user_id)}>Delete </Button>
                     </div>
                     )
                 })}
