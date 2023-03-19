@@ -1,3 +1,5 @@
+// This file is tutorial-specific. Might use aspects of it for the 
+
 import React, { Fragment, useEffect, useState } from "react";
 import EditUser from "./EditUser";
 import Button from '@mui/material/Button';
@@ -43,9 +45,9 @@ const ListUser = () => {
                 {names.map(user => {
                     return (<div key={user.user_id}>
                         <li>{user.name}</li>
-                        <ButtonGroup sx={{ m: 2}} variant="contained">
-                        <EditUser user={user}/>
-                        <Button color="error" onClick={() => deleteUser(user.user_id)}>Delete </Button>
+                        <ButtonGroup sx={{ m: 2 }} variant="contained">
+                            <EditUser user={user} />
+                            <Button color="error" onClick={() => deleteUser(user.user_id)}>Delete </Button>
                         </ButtonGroup>
                     </div>
                     )
