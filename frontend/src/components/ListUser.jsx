@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect, useState } from "react";
 import EditUser from "./EditUser";
 import Button from '@mui/material/Button';
+import ButtonGroup from '@mui/material/ButtonGroup';
 
 const ListUser = () => {
 
@@ -42,8 +43,10 @@ const ListUser = () => {
                 {names.map(user => {
                     return (<div key={user.user_id}>
                         <li>{user.name}</li>
-                        <Button sx={{ m: 4}} variant="contained" color="success"> <EditUser/> </Button>
-                        <Button variant="contained" color="error" onClick={() => deleteUser(user.user_id)}>Delete </Button>
+                        <ButtonGroup sx={{ m: 2}} variant="contained">
+                        <EditUser user={user}/>
+                        <Button color="error" onClick={() => deleteUser(user.user_id)}>Delete </Button>
+                        </ButtonGroup>
                     </div>
                     )
                 })}

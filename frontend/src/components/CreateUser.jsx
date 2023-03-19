@@ -1,4 +1,6 @@
 import React, {Fragment, useState} from "react";
+import { TextField } from "@mui/material";
+import { Button } from "@mui/material";
 
 const CreateUser = () => {
 
@@ -24,11 +26,13 @@ const CreateUser = () => {
         <Fragment>
             <h1>Sign up!</h1>
             <form onSubmit={onSubmitForm}>
-                <input type= "text"
+                <TextField
+                variant="outlined"
+                type="text"
                 value={name}
                 onChange={e => setName(e.target.value) }
                 />
-                <button>Submit</button>
+                <Button type="submit" variant="contained" color="primary" sx={{ m: 2}} >Submit</Button>
             </form>
         </Fragment>
     )
