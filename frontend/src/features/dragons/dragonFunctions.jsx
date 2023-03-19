@@ -1,9 +1,11 @@
-//Will contain all the CRUD functions needed for the gallery
+//Takes the CRUD functions from the API and uses them in its own functions, with added authentication
 
 //VENDOR ONLY: CREATE a dragon
 
-//READ: get dragons
+//READ: get all dragons by one artist
 
-//VENDOR ONLY: UPDATE a dragon
+//READ: get one dragon by id
 
-//VENDOR ONLY: DELETE a dragon
+//VENDOR ONLY: UPDATE a dragon by id
+
+//VENDOR ONLY: DELETE a dragon by id
