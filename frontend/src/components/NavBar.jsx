@@ -5,4 +5,4 @@
 // an account icon, which only shows up when someone is signed in, and takes them to their account page
 // and a sign out/in icon, which changes depending on if the person is signed in/out
 
-//in the mobild version, the navbar will collapse into a hamburger
+//in the mobile version, the navbar will collapse into a hamburger
