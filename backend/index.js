@@ -1,11 +1,15 @@
 const express = require('express');
 const app = express();
 const cors = require("cors");
-const pool = require("./db")
+const pool = require("./db");
+const {sequelize} = require('./models')
+//require dotenv
 
 //middleware
 app.use(cors());
 app.use(express.json());//req.body
+
+//
 
 //ROUTES FOR USER
 

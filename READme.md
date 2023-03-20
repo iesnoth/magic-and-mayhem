@@ -51,13 +51,20 @@ This will have several benefits:
 - Express
 - Node.js
 - bcrypt
+- Material UI
 
 ### Stretch goals
 - Functional payment page
 - A multi-functional search bar which allows sorting by price, date of upload, and/or color
+- Light and dark mode
 
 ### Contributors
 - Victoria Beasley
 - George Henderson
 
 ### Citations
+1. "Material UI React Tutorial" from Traversy Media: https://www.youtube.com/watch?v=vyJU9efvUtQ
+2. Modal Tutorials:
+    - "How to Create React Modal Popup using Material UI" by Digamber https://www.positronx.io/create-react-modal-popup-with-material-ui/
+    - "Create an Interactive Material UI Dialog in React" by Uncle Big Bay https://www.copycat.dev/blog/material-ui-dialog/
+

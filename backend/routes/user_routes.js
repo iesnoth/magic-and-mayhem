@@ -1,0 +1,1 @@
+//shorthand for the dragon routes, includes extra protection from the authMiddleware file
