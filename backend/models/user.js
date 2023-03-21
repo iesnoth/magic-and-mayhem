@@ -4,11 +4,11 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
-    static associate({Dragon}) {
+    static associate({ Dragon }) {
       User.hasMany(Dragon, {
         foreignKey: "user_uid",
         as: "dragons"
-    })
+      })
     }
   }
   User.init({
@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
       allowNull: false,
-      default: sequelize.fn('uuid_generate_v4')
+      // default: sequelize.fn('uuid_generate_v4()')
     },
     name: {
       type: DataTypes.STRING,
