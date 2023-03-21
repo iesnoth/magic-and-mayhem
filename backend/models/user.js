@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
   User.init({
     user_uid: {
       type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
       allowNull: false,
       default: sequelize.fn('uuid_generate_v4')

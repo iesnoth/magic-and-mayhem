@@ -1,4 +1,4 @@
-const pool = require("./db");
+const pool = require("../db");
 const asyncHandler = require('express-async-handler');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
@@ -20,6 +20,7 @@ const signUp = asyncHandler(async (req, res) => {
 
     if (!name || !email || !password) {
         res.status(400)
+        console.log(req.body)
         throw new Error('Please add all required fields.')
     }
 
@@ -36,11 +37,7 @@ const signUp = asyncHandler(async (req, res) => {
 
     //User added to postgres users table
     const user = await User.create({
-        user_uid: uuid_generate_v4(),
-        name,
-        email,
-        password: hashedPassword,
-        vendor
+        
     })
     //if there is a user, assigns token and sends back some user data
     if (user) {
@@ -50,6 +47,7 @@ const signUp = asyncHandler(async (req, res) => {
             email: user.email,
             token: assignToken(user._id)
         })
+        console.log('User created!')
     } else {
         res.status(400)
         throw new Error('Invalid User Data')
@@ -63,10 +61,10 @@ const logIn = asyncHandler(async (req, res) => {
     const { email, password } = req.body
 
     //check for user email
-    const user = await User.findOne({email})
+    const user = await User.findOne({ email })
 
     //check password
-    if (user && (await bcrypt.compare(password, user.password))){
+    if (user && (await bcrypt.compare(password, user.password))) {
 
         res.json({
             _id: user.user_uid,
@@ -83,58 +81,58 @@ const logIn = asyncHandler(async (req, res) => {
 //READ a user in their account page
 //GET ALL
 
-app.get("/users", async (req, res) => {
-    try {
-        const allUsers = await pool.query("SELECT * FROM users");
-        res.json(allUsers.rows);
-    } catch (err) {
-        console.error(err.message);
-    }
-})
+// app.get("/users", async (req, res) => {
+//     try {
+//         const allUsers = await pool.query("SELECT * FROM users");
+//         res.json(allUsers.rows);
+//     } catch (err) {
+//         console.error(err.message);
+//     }
+// })
 
-//GET ONE
+// //GET ONE
 
-app.get("/users/:id", async (req, res) => {
-    try {
-        const { id } = req.params;
-        const user = await pool.query("SELECT * FROM users WHERE user_id = $1", [id]);
+// app.get("/users/:id", async (req, res) => {
+//     try {
+//         const { id } = req.params;
+//         const user = await pool.query("SELECT * FROM users WHERE user_id = $1", [id]);
 
-        res.json(user.rows[0])
-    } catch (err) {
-        console.error(err.message);
-    }
-})
+//         res.json(user.rows[0])
+//     } catch (err) {
+//         console.error(err.message);
+//     }
+// })
 
 
-//THESE LAST TWO ARE OPTIONAL for now
-//UPDATE a user from their account page
+// //THESE LAST TWO ARE OPTIONAL for now
+// //UPDATE a user from their account page
 
-app.put("/users/:id", async (req, res) => {
-    try {
-        const { id } = req.params;
-        const { name } = req.body;
-        const updateUser = await pool.query(
-            "UPDATE users SET name = $1 WHERE user_id = $2",
-            [name, id]
-        );
+// app.put("/users/:id", async (req, res) => {
+//     try {
+//         const { id } = req.params;
+//         const { name } = req.body;
+//         const updateUser = await pool.query(
+//             "UPDATE users SET name = $1 WHERE user_id = $2",
+//             [name, id]
+//         );
 
-        res.json("User was updated!");
-    } catch (err) {
-        console.error(err.message);
-    }
-});
+//         res.json("User was updated!");
+//     } catch (err) {
+//         console.error(err.message);
+//     }
+// });
 
-//DELETE a user from account page (admins will also be able to delete users, but only the user can update)
-app.delete("/users/:id", async (req, res) => {
-    try {
-        const { id } = req.params;
-        const deleteUser = await pool.query("DELETE FROM users WHERE user_id = $1", [id]);
+// //DELETE a user from account page (admins will also be able to delete users, but only the user can update)
+// app.delete("/users/:id", async (req, res) => {
+//     try {
+//         const { id } = req.params;
+//         const deleteUser = await pool.query("DELETE FROM users WHERE user_id = $1", [id]);
 
-        res.json("User deleted.")
-    } catch (err) {
-        console.error(err.message);
-    }
-})
+//         res.json("User deleted.")
+//     } catch (err) {
+//         console.error(err.message);
+//     }
+// })
 
 module.exports = {
     signUp,

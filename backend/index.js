@@ -1,8 +1,7 @@
 const express = require('express');
-const app = express();
 const cors = require("cors");
-
-const {sequelize} = require('./models')
+const app = express();
+//const {sequelize} = require('./models')
 
 //middleware
 require('dotenv').config()
@@ -13,8 +12,6 @@ app.use(express.urlencoded({ extended: false }))
 if (process.env.NODE_ENV === "production") {
     app.use(express.static(path.join(__dirname, 'client', 'build')));
 }
-
-const db = process.env.PG_URI;
 
 //ROUTES FOR USER
 app.use('/users', require('./routes/user_routes'))
