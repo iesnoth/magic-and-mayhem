@@ -1,18 +1,15 @@
-import React, { Fragment } from "react";
+import React from "react";
 import './App.css';
+import Gallery from "./pages/Gallery";
 
-import CreateUser from "./components/tutorial/CreateUser";
-import ListUser from "./components/tutorial/ListUser";
+
 
 function App() {
   return (
-    <div>
-      <Fragment>
-        <CreateUser />
-        <ListUser />
-
-      </Fragment>
-    </div>
+    <>
+        <Gallery />
+        
+    </>
   );
 }
 
