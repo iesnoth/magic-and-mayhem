@@ -28,7 +28,7 @@ app.post('/users', async (req, res) => {
 })
 
 //find all
-app.get('/users', async (req,res)=>{
+app.get('/users', async (req, res) => {
     try {
         const users = await User.findAll()
 
@@ -40,7 +40,7 @@ app.get('/users', async (req,res)=>{
 })
 
 //find one
-app.get('/users/:user_uid', async (req,res)=>{
+app.get('/users/:user_uid', async (req, res) => {
     const uuid = req.params.user_uid
     try {
         const users = await User.findOne({
@@ -55,8 +55,18 @@ app.get('/users/:user_uid', async (req,res)=>{
 })
 
 //create a dragon
-app.post('/dragons',async(req,res) => {
-    const {userUuid, }
+app.post('/dragons', async (req, res) => {
+    const { userUuid, name, images, price, artist, description } = req.body
+
+    try {
+        const user = await User.findOne({ where: { user_uid: userUuid } })
+
+        const newDragon = Pet.create({ name, images, price, artist, description, userId: user.id })
+        return re.json(newDragon)
+    } catch (err) {
+        console.log(err)
+        return res.status(500).json(err)
+    }
 })
 
 //ROUTES FOR USER
