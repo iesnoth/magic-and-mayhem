@@ -30,8 +30,7 @@ app.post('/dragons', async (req, res) => {
 })
 
 //ROUTES FOR USER
-const userController = require('./controllers/user_controller')
-app.use('/users',userController)
+app.use('/users', require('./routes/userRoutes'))
 
 app.listen(process.env.PORT, async () => {
     console.log(`server has started on port ${process.env.PORT}`);
