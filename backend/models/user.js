@@ -9,12 +9,12 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate({Pet}) {
+    static associate({ Pet }) {
       // define association here
-      this.hasMany(Pet, {foreignKey: 'artistId'})
-      this.hasMany(Pet, {foreignKey: 'buyerId'})
+      this.hasMany(Pet, { foreignKey: 'artistId' })
+      this.hasMany(Pet, { foreignKey: 'buyerId' })
     }
-// hides the id from the public
+    // hides the id from the public
     toJSON() {
       return { ...this.get(), id: undefined }
     }
@@ -33,6 +33,10 @@ module.exports = (sequelize, DataTypes) => {
     email: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
+      validate: {
+        isEmail: true
+      }
     },
     password: {
       type: DataTypes.STRING,
