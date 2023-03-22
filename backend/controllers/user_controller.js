@@ -19,9 +19,6 @@ users.post('/', asyncHandler(async (req, res) => {
         password: hashedPassword,
         vendor
     })
-
-
-
     return res.json(user)
 
 }))
