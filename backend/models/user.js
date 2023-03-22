@@ -4,11 +4,13 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
-    static associate({ Dragon }) {
-      User.hasMany(Dragon, {
-        foreignKey: "user_uid",
-        as: "dragons"
-      })
+    /**
+     * Helper method for defining associations.
+     * This method is not a part of Sequelize lifecycle.
+     * The `models/index` file will call this method automatically.
+     */
+    static associate(models) {
+      // define association here
     }
   }
   User.init({
@@ -17,29 +19,28 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
       allowNull: false,
-      // default: sequelize.fn('uuid_generate_v4()')
     },
     name: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
     email: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
-    password: {
+    password:{
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
     vendor: {
       type: DataTypes.BOOLEAN,
-      allowNull: true
-    },
+      allowNull: true,
+      defaultValue:false
+    }
   }, {
     sequelize,
-    modelName: 'User',
     tableName: 'users',
-    timestamps: true
+    modelName: 'User',
   });
   return User;
 };

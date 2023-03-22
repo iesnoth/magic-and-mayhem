@@ -1,7 +1,11 @@
-const pool = require("../db");
+//const pool = require("../db");
+// const Sequelize = require('sequelize');
+// const sequelize = require('../config/config.json').sequelize
 const asyncHandler = require('express-async-handler');
 const jwt = require('jsonwebtoken');
-//const User = require('../models/user')
+const bcrypt = require('bcryptjs');
+const db = require('../models');
+const { User } = db
 
 
 //make a jwt token
@@ -17,26 +21,19 @@ const assignToken = (id) => {
 const signUp = asyncHandler(async (req, res) => {
     const { name, email, password, vendor } = req.body
 
+    //Hash Password
+    // const salt = await bcrypt.genSalt(10)
+    // const hashedPassword = await bcrypt.hash(password, salt)
+
     //User added to postgres users table
-    //password hashed and salted through the pgcrypto extension in the database
-    const user = await pool.query(
-        "INSERT INTO users (user_uid, name, email, password, vendor) VALUES(uuid_generate_v4(),$1, $2, crypt($3, gen_salt('bf')), $4) RETURNING *",
-        [name, email, password, vendor]
-    );
-
-    if (!name || !email || !password) {
-        res.status(400)
-        console.log(req.body)
-        throw new Error('Please add all required fields.')
-    }
-
-    const userExists = await pool.query("SELECT * FROM users WHERE email = $1", [email]);
-
-    if (userExists) {
-        res.status(400)
-        throw new Error('Uh oh! That email is already in use.')
-    }
-
+    //password hashed and salted through bcrypt
+    const user = await User.create({
+        name,
+        email,
+        password,
+        vendor
+    });
+    console.log(req.body)
     //if there is a user, assigns token and sends back some user data
     if (user) {
         res.json(201).json({
@@ -51,6 +48,17 @@ const signUp = asyncHandler(async (req, res) => {
         throw new Error('Invalid User Data')
     }
 
+    const userExists = await User.findOne({ email })
+    //check for email and throw error if it's already in use
+    if (userExists) {
+        res.status(400)
+        throw new Error('Uh oh! That email is already in use.')
+    }
+    //check for all required fields and throw error if one or more isn't filled
+    if (!name || !email || !password) {
+        res.status(400)
+        throw new Error('Please add all required fields.')
+    }
 })
 
 //READ login

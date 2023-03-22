@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require("cors");
 const app = express();
-//const {sequelize} = require('./models')
+const {sequelize} = require('./models')
 
 //middleware
 require('dotenv').config()
@@ -16,6 +16,8 @@ if (process.env.NODE_ENV === "production") {
 //ROUTES FOR USER
 app.use('/users', require('./routes/user_routes'))
 
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT, async() => {
     console.log(`server has started on port ${process.env.PORT}`);
+    await sequelize.authenticate()
+    console.log('Database connected!')
 });
