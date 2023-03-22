@@ -14,6 +14,10 @@ module.exports = (sequelize, DataTypes) => {
       this.belongsTo(User, { foreignKey: 'artistId' })
       this.belongsTo(User, { foreignKey: 'buyerId' })
     }
+
+    toJSON() {
+      return { ...this.get(), id: undefined, artistId: undefined }
+    }
   }
   Pet.init({
     pet_uid: {
@@ -45,7 +49,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {
     sequelize,
-    tablename: 'dragons',
+    tableName: 'dragons',
     modelName: 'Pet',
   });
   return Pet;
