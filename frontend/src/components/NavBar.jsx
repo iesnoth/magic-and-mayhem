@@ -17,16 +17,16 @@ function NavBar () {
         <nav>
                 <ul className="navbar">
                     <li className="list">
-                        <CustomLink to="/">Home</CustomLink>
+                        <CustomLink className="link" to="/">Home</CustomLink>
                     </li>
                     <li className="list">
-                        <CustomLink to="/VenderProfile">Profile</CustomLink>
+                        <CustomLink className="link" to="/VenderProfile">Profile</CustomLink>
                     </li>
                     <li className="list">
-                        <CustomLink to="/SignUp">Sign up</CustomLink>
+                        <CustomLink className="link" to="/SignUp">Sign up</CustomLink>
                     </li>
                     <li className="list">
-                        <CustomLink to="/CreateUpdateDragon">Create post</CustomLink>
+                        <CustomLink className="link" to="/CreateUpdateDragon">Create post</CustomLink>
                     </li>
                 </ul>
         </nav>

@@ -7,7 +7,6 @@ import React from "react";
 function Gallery() {
     return (
         <div>
-            
             <div>
                 <h1>Welcome to Magic and Mayhem</h1>
                 <h2>Choose a Dragon!</h2>
