@@ -7,3 +7,12 @@
 //Has everything the Buyer Profile has, as well as:
     //a page for them to view all the dragons they've put up for sale, and give them an option to edit/delete unsold dragons
     
+import React from "react";
+
+function VenderProfile() {
+    return (
+        <h1>This is the vender profile</h1>
+    )
+}
+
+export default VenderProfile;

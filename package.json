@@ -1,0 +1,14 @@
+{
+  "name": "magic-and-mayhem-1",
+  "version": "1.0.0",
+  "description": "Have you ever wanted a pet dragon?\r Bad question, everyone has.\r Have you ever wanted a one-of-a-kind dragon character that you have the rights to? Are you not an artist, or want to support artists?\r If so, you'll love Magic and Mayhem, a site where artists can sell unique dragon designs for fellow creatives and collectors to use.\r The heart and goal of this project is to lift up and protect artists, as well as have some fun.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "react-router-dom": "^6.9.0"
+  }
+}
