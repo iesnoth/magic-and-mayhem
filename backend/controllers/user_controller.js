@@ -85,9 +85,10 @@ const logIn = asyncHandler(async (req, res) => {
 
 //READ
 //show one user's profile to only the user based on their token
-const getAccount = asyncHandler(async (req, res) => {
-    res.json({message:'User data display'})
-    console.log("show me something")
+const getMe = asyncHandler(async (req, res) => {
+    //got user in the middleware
+    console.log("Do you see me?")
+    res.json({"message":"See me!"})
 })
 
 //Generate a JWT Token
@@ -121,6 +122,6 @@ module.exports = {
     listAll,
     searchByName,
     logIn,
-    getAccount,
+    getMe,
     deleteUser
 }
