@@ -6,9 +6,10 @@
 import React from "react";
 
 function CreateUpdateDragon() {
-    return {
-        
-    }
+    return (
+        <h1>This is the Create post page</h1>
+    )
+    
 }
 
 export default CreateUpdateDragon;

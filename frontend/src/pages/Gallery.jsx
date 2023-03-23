@@ -2,12 +2,12 @@
 //It will go by a page format, not be an infinite scroll, so it will need to have an entry limit and page icons at the bottom.
 
 import React from "react";
-import NavBar from "../components/NavBar";
+
 
 function Gallery() {
     return (
         <div>
-            <NavBar />
+            
             <div>
                 <h1>Welcome to Magic and Mayhem</h1>
                 <h2>Choose a Dragon!</h2>

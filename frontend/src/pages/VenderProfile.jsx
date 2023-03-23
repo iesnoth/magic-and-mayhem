@@ -8,13 +8,11 @@
     //a page for them to view all the dragons they've put up for sale, and give them an option to edit/delete unsold dragons
     
 import React from "react";
-import { ReactDOM } from "react-dom";
-import App from '../App';
 
 function VenderProfile() {
-    return {
-        
-    }
+    return (
+        <h1>This is the vender profile</h1>
+    )
 }
 
 export default VenderProfile;

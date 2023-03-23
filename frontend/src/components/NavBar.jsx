@@ -8,30 +8,41 @@
 //in the mobile version, the navbar will collapse into a hamburger
 
 import React from "react";
-import Gallery from "../pages/Gallery";
-import SignUp from "../pages/SignUp";
-
+import { Link, useMatch, useResolvedPath } from "react-router-dom";
 
 
 
 function NavBar () {
-    return(
+   return(
         <nav>
                 <ul className="navbar">
-                    <li>
-                        <a href="../pages/Gallery">Home</a>
+                    <li className="list">
+                        <CustomLink to="/">Home</CustomLink>
                     </li>
-                    <li>
-                        <a href="../pages/SignUp">Sign up</a>
+                    <li className="list">
+                        <CustomLink to="/VenderProfile">Profile</CustomLink>
                     </li>
-                    <li>
-                        <a href="./pages/CreateUpdateDragons">Post a Dragon</a>
+                    <li className="list">
+                        <CustomLink to="/SignUp">Sign up</CustomLink>
                     </li>
-                    <li>
-                        <a href="./pages/VenderProfile">Your Vender Profile</a>
+                    <li className="list">
+                        <CustomLink to="/CreateUpdateDragon">Create post</CustomLink>
                     </li>
                 </ul>
         </nav>
+    )
+}
+
+function CustomLink({ to, children, ...props}) {
+    const resolvedPath = useResolvedPath(to)
+    const isActive = useMatch({ path: resolvedPath.pathname, end: true })
+
+    return (
+        <li className={isActive ? "active" : ""}>
+            <Link to={to} {...props}>
+                {children}
+            </Link>
+        </li>
     )
 }
 
