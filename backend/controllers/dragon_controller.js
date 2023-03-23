@@ -1,11 +1,12 @@
+const asyncHandler = require('express-async-handler')
+const db = require('../models')
+const { User, Pet } = db
+
 //CRUD functions for the dragons db
 //uses the Dragon and User models
 
 //CREATE a dragon
-
-
-//READ: get all dragons by a certain artist
-app.post('/dragons', async (req, res) => {
+const createDragon = asyncHandler(async (req, res) => {
     const { userUuid, name, images, price, artist, description } = req.body
 
     try {
@@ -19,6 +20,9 @@ app.post('/dragons', async (req, res) => {
     }
 })
 
+//READ: get all dragons by a certain artist
+
+
 //READ: get one dragon by id
 
 //UPDATE a dragon by id
@@ -26,3 +30,7 @@ app.post('/dragons', async (req, res) => {
 //DELETE a dragon by id
 
 //
+
+module.exports = {
+    createDragon
+}

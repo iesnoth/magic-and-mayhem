@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const { signUp, listAll, searchByName, logIn, getAccount } = require('../controllers/user_controller')
+const { signUp, listAll, searchByName, logIn, getAccount, deleteUser } = require('../controllers/user_controller')
 const { protect } = require('../middleware/tokenMiddleware')
 
 //POST
@@ -22,5 +22,9 @@ router.get('/:name', searchByName)
 //READ
 //allow user to access their own account info
 router.get('/account', protect, getAccount)
+
+//DELETE
+//for admins only at the moment
+router.delete('/:user_uid', deleteUser)
 
 module.exports = router

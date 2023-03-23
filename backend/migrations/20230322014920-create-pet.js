@@ -14,11 +14,11 @@ module.exports = {
         primaryKey: true,
         allowNull: false,
       },
-      artistId:{
+      artistId: {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
-      buyerId:{
+      buyerId: {
         type: Sequelize.INTEGER,
         allowNull: true
       },
@@ -33,10 +33,6 @@ module.exports = {
       },
       price: {
         type: Sequelize.DECIMAL(20, 2),
-        allowNull: false,
-      },
-      artist: {
-        type: Sequelize.STRING,
         allowNull: false,
       },
       description: {
