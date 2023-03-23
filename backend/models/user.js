@@ -12,12 +12,11 @@ module.exports = (sequelize, DataTypes) => {
     static associate({ Pet }) {
       // define association here
       this.hasMany(Pet, { foreignKey: 'artistId' })
-      this.hasMany(Pet, { foreignKey: 'buyerId' })
     }
     // hides the id from the public
-    toJSON() {
-      return { ...this.get(), id: undefined }
-    }
+    // toJSON() {
+    //   return { ...this.get(), id: undefined }
+    // }
   }
   User.init({
     user_uid: {

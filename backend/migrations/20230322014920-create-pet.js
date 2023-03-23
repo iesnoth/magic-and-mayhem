@@ -1,55 +1,37 @@
 'use strict';
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up(queryInterface, Sequelize) {
+  async up(queryInterface, DataTypes) {
     await queryInterface.createTable('dragons', {
       id: {
         allowNull: false,
         autoIncrement: true,
-        type: Sequelize.INTEGER
+        primaryKey: true,
+        type: DataTypes.INTEGER
       },
       pet_uid: {
-        type: Sequelize.UUID,
-        defaultValue: Sequelize.UUIDV4,
-        primaryKey: true,
+        type: DataTypes.UUID,
+        defaultValue: DataTypes.UUIDV4,
+      },
+      description: {
+        type: DataTypes.STRING,
         allowNull: false,
       },
       artistId: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-      },
-      buyerId: {
-        type: Sequelize.INTEGER,
-        allowNull: true
-      },
-      name: {
-        type: Sequelize.STRING,
-        allowNull: true,
-        defaultValue: "Fearsome Wyrm"
-      },
-      images: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      price: {
-        type: Sequelize.DECIMAL(20, 2),
-        allowNull: false,
-      },
-      description: {
-        type: Sequelize.STRING,
+        type: DataTypes.INTEGER,
         allowNull: false,
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: DataTypes.DATE
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: DataTypes.DATE
       }
     });
   },
-  async down(queryInterface, Sequelize) {
+  async down(queryInterface, DataTypes) {
     await queryInterface.dropTable('dragons');
   }
 };
