@@ -39,10 +39,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DECIMAL(20, 2),
       allowNull: false
     },
-    artist: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
     description: {
       type: DataTypes.STRING,
       allowNull: false,

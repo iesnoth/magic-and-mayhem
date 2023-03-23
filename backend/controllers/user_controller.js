@@ -1,11 +1,12 @@
-const users = require('express').Router();
+// const users = require('express').Router();
 const bcrypt = require('bcryptjs')
 const asyncHandler = require('express-async-handler')
+const jwt = require('jsonwebtoken')
 const db = require('../models')
-const { User, Pet } = db
+const { User } = db
 
 //create a user
-users.post('/', asyncHandler(async (req, res) => {
+const signUp = asyncHandler(async (req, res) => {
     const { name, email, password, vendor } = req.body
 
     //hash password
@@ -21,10 +22,10 @@ users.post('/', asyncHandler(async (req, res) => {
     })
     return res.json(user)
 
-}))
+})
 
 //find all
-users.get('/', asyncHandler(async (req, res) => {
+const listAll = asyncHandler(async (req, res) => {
     try {
         const users = await User.findAll()
 
@@ -33,14 +34,14 @@ users.get('/', asyncHandler(async (req, res) => {
         console.log(err)
         return res.status(500).json(err)
     }
-}))
+})
 
 //find one
-users.get('/:user_uid', asyncHandler(async (req, res) => {
-    const uuid = req.params.user_uid
+const searchByName = asyncHandler(async (req, res) => {
+    const name = req.params.name
     try {
         const users = await User.findOne({
-            where: { user_uid: uuid }
+            where: { name }
         })
 
         return res.json(users)
@@ -48,10 +49,55 @@ users.get('/:user_uid', asyncHandler(async (req, res) => {
         console.log(err)
         return res.status(500).json(err)
     }
-}))
+})
+
+//POST
+//login
+//public access
+const logIn = asyncHandler(async (req, res) => {
+    const { email, password } = req.body
+
+    //Check if email is in the database
+
+    const user = await User.findOne({ email })
+
+    if (!user) {
+        res.status(400)
+        throw new Error('That email could not be found.')
+    }
+
+    if (user && (await bcrypt.compare(password, user.password))) {
+        res.json({
+            user_uid: user.user_uid,
+            name: user.name,
+            email: user.email,
+            token: generateToken(user.user_uid)
+        })
+    } else {
+        res.status(400)
+        throw new Error('Incredible! As in, you have no cred.')
+    }
+
+})
+
+//READ
+//show one user's profile to only the user based on their token
+const getMe = asyncHandler(async (req, res) => {
+    //got user in the middleware
+    console.log("Do you see me?")
+    res.json({"message":"See me!"})
+})
+
+//Generate a JWT Token
+const generateToken = (id) => {
+
+    return jwt.sign({ id }, process.env.JWT_SECRET, {
+        expiresIn: '30d',
+    })
+}
 
 //delete a user
-users.delete('/:user_uid', asyncHandler(async (req, res) => {
+const deleteUser =  asyncHandler(async (req, res) => {
     const uuid = req.params.user_uid
     try {
         const deleteUser = await User.destroy({
@@ -66,6 +112,13 @@ users.delete('/:user_uid', asyncHandler(async (req, res) => {
         console.log(err)
         return res.status(500).json(err)
     }
-}))
+})
 
-module.exports = users
+module.exports = {
+    signUp,
+    listAll,
+    searchByName,
+    logIn,
+    getMe,
+    deleteUser
+}
