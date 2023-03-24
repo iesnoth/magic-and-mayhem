@@ -11,20 +11,20 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate({ User }) {
       // define association here
-      this.belongsTo(User, { foreignKey: 'artistId' })
-      this.belongsTo(User, { foreignKey: 'buyerId' })
+      this.belongsTo(User, {
+        foreignKey: 'artistId',
+        as: 'artist'
+        })
     }
 
     toJSON() {
-      return { ...this.get(), id: undefined, artistId: undefined }
+    return { ...this.get(), id: undefined, artistId: undefined }
     }
   }
   Pet.init({
     pet_uid: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
-      primaryKey: true,
-      allowNull: false,
     },
     name: {
       type: DataTypes.STRING,
@@ -42,11 +42,12 @@ module.exports = (sequelize, DataTypes) => {
     description: {
       type: DataTypes.STRING,
       allowNull: false,
-    }
-  }, {
-    sequelize,
-    tableName: 'dragons',
-    modelName: 'Pet',
-  });
+    },
+  },
+    {
+      sequelize,
+      tableName: 'dragons',
+      modelName: 'Pet',
+    });
   return Pet;
 };

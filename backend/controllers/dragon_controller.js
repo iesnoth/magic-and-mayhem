@@ -7,12 +7,13 @@ const { User, Pet } = db
 
 //CREATE a dragon
 const createDragon = asyncHandler(async (req, res) => {
-    const { userUuid, name, images, price, artist, description } = req.body
+    const { userUuid, name, images, price, description } = req.body
 
     try {
         const user = await User.findOne({ where: { user_uid: userUuid } })
+        console.log(user)
+        const newDragon = Pet.create({ name, images, price, description, artistId: user.id })
 
-        const newDragon = Pet.create({ name, images, price, artist, description, artistId: user.id })
         return res.json(newDragon)
     } catch (err) {
         console.log(err)
@@ -21,6 +22,15 @@ const createDragon = asyncHandler(async (req, res) => {
 })
 
 //READ: get all dragons by a certain artist
+const getDragons = asyncHandler(async (req, res) => {
+    try {
+        const dragons = await Pet.findAll({ include: 'artist' })
+        return res.json(dragons)
+    } catch (err) {
+        console.log(err)
+        return res.status(500).json(err)
+    }
+})
 
 
 //READ: get one dragon by id
@@ -32,5 +42,6 @@ const createDragon = asyncHandler(async (req, res) => {
 //
 
 module.exports = {
-    createDragon
+    createDragon,
+    getDragons
 }
