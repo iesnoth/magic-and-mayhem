@@ -22,6 +22,7 @@ const signUp = asyncHandler(async (req, res) => {
     })
 
     return res.json(user)
+
 })
 
 //POST
@@ -32,7 +33,9 @@ const logIn = asyncHandler(async (req, res) => {
 
     //Check if email is in the database
 
-    const user = await User.findOne({ email })
+    const user = await User.findOne({
+        where: { email }
+    })
 
     if (!user) {
         res.status(400)
@@ -69,7 +72,7 @@ const generateToken = (id) => {
 }
 
 //delete a user
-const deleteUser =  asyncHandler(async (req, res) => {
+const deleteUser = asyncHandler(async (req, res) => {
     const uuid = req.params.user_uid
     try {
         const deleteUser = await User.destroy({

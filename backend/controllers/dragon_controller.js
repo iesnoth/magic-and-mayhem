@@ -22,6 +22,15 @@ const createDragon = asyncHandler(async (req, res) => {
 })
 
 //READ: get all dragons by a certain artist
+const getDragons = asyncHandler(async (req, res) => {
+    try {
+        const dragons = await Pet.findAll({ include: 'artist' })
+        return res.json(dragons)
+    } catch (err) {
+        console.log(err)
+        return res.status(500).json(err)
+    }
+})
 
 
 //READ: get one dragon by id
@@ -33,5 +42,6 @@ const createDragon = asyncHandler(async (req, res) => {
 //
 
 module.exports = {
-    createDragon
+    createDragon,
+    getDragons
 }

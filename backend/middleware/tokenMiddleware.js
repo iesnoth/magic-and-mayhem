@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken')
 const asyncHandler = require('express-async-handler')
-const { User } = require('../models/user')
+const db = require('../models')
+const { User } = db
 
 const protect = asyncHandler(async (req, res, next) => {
     let token
@@ -10,13 +11,17 @@ const protect = asyncHandler(async (req, res, next) => {
         try {
             //Get token from header by removing the bearer
             token = req.headers.authorization.split(' ')[1]
-            console.log('token split')
+            //console.log('token split')
             //Verify the token against secret
-            let decoded = jwt.verify(token, process.env.JWT_SECRET)
-            console.log(decoded)
+            const decoded = jwt.verify(token, process.env.JWT_SECRET)
+            const uuid = decoded.id
+            //console.log(uuid)
             //Get user from the token payload
-            req.user = await User.findById(decoded.id).select('-password')
-            //calls next piece of middleware
+            req.user = await User.findAll({
+                where: { user_uid: uuid },
+                include: 'dragons'
+            })
+            //calls next piece of middleware            
             next()
         } catch (error) {
             console.log(error)

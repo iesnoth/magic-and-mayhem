@@ -12,7 +12,8 @@ module.exports = (sequelize, DataTypes) => {
     static associate({ User }) {
       // define association here
       this.belongsTo(User, {
-        foreignKey: 'artistId'
+        foreignKey: 'artistId',
+        as: 'artist'
         })
     }
 
