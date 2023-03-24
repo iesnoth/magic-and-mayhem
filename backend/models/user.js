@@ -11,31 +11,35 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate({ Pet }) {
       // define association here
-      // this.hasMany(Pet, { foreignKey: 'artistId' })
+      this.hasMany(Pet, { foreignKey: 'artistId' })
     }
     // hides the id from the public
-    // toJSON() {
-    //   return { ...this.get(), id: undefined }
-    // }
+    toJSON() {
+      return { ...this.get(), id: undefined }
+    }
   }
   User.init({
     user_uid: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
-      primaryKey: true,
-      allowNull: false,
     },
     name: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true
+      unique: true,
+      validate: {
+        notNull: { msg: 'User must have a name' },
+        notEmpty: { msg: 'Name must not be empty' }
+      }
     },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
       validate: {
-        isEmail: true
+        notNull: { msg: 'User must have a email' },
+        notEmpty: { msg: 'email must not be empty' },
+        isEmail: { msg: 'Must be a valid e-mail address.' },
       }
     },
     password: {

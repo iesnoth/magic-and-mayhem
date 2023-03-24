@@ -11,7 +11,7 @@ const createDragon = asyncHandler(async (req, res) => {
 
     try {
         const user = await User.findOne({ where: { user_uid: userUuid } })
-        // console.log(user)
+        console.log(user)
         const newDragon = Pet.create({ name, images, price, description, artistId: user.id })
 
         return res.json(newDragon)

@@ -11,20 +11,14 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate({ User }) {
       // define association here
-      // this.belongsTo(User, {
-      //   foreignKey: {
-      //     allowNull:false,
-      //     name: 'artistId',
-      //     references:{
-      //       model:'User',
-      //       key:'id'
-      //     }}
-      //   })
+      this.belongsTo(User, {
+        foreignKey: 'artistId'
+        })
     }
 
-    // toJSON() {
-    //   return { ...this.get(), id: undefined, artistId: undefined }
-    // }
+    toJSON() {
+    return { ...this.get(), id: undefined, artistId: undefined }
+    }
   }
   Pet.init({
     pet_uid: {
