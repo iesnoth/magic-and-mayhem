@@ -1,8 +1,7 @@
 const express = require('express')
 const router = express.Router()
-const { signUp, listAll, searchByName, logIn, getMe, deleteUser } = require('../controllers/user_controller')
+const { signUp, logIn, getMe, deleteUser } = require('../controllers/user_controller')
 const { protect } = require('../middleware/tokenMiddleware')
-const asyncHandler = require('express-async-handler')
 
 //POST
 //adding new user
@@ -13,20 +12,8 @@ router.post('/', signUp)
 router.post('/login', logIn)
 
 //READ
-//find all (this will be only for admin if possible)
-router.get('/', listAll)
-
-//READ
-//find one user by name
-router.get('/:name', searchByName)
-
-//READ
 //allow user to access their own account info
-router.get('/me', asyncHandler(async (req, res) => {
-    //got user in the middleware
-    console.log("Do you see me?")
-    res.json({"message":"See me!"})
-}))
+router.get('/me',protect, getMe)
 
 //DELETE
 //for admins only at the moment

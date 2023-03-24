@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate({ Pet }) {
       // define association here
-      this.hasMany(Pet, { foreignKey: 'artistId' })
+      // this.hasMany(Pet, { foreignKey: 'artistId' })
     }
     // hides the id from the public
     // toJSON() {

@@ -13,12 +13,21 @@ module.exports = {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
       },
-      description: {
+      name: {
+        type: DataTypes.STRING,
+        allowNull: true,
+        defaultValue: "Fearsome Wyrm"
+      },
+      images: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      artistId: {
-        type: DataTypes.INTEGER,
+      price: {
+        type: DataTypes.DECIMAL(20, 2),
+        allowNull: false
+      },
+      description: {
+        type: DataTypes.STRING,
         allowNull: false,
       },
       createdAt: {

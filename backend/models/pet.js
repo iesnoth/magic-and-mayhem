@@ -11,7 +11,15 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate({ User }) {
       // define association here
-      this.belongsTo(User, { foreignKey: 'artistId' })
+      // this.belongsTo(User, {
+      //   foreignKey: {
+      //     allowNull:false,
+      //     name: 'artistId',
+      //     references:{
+      //       model:'User',
+      //       key:'id'
+      //     }}
+      //   })
     }
 
     // toJSON() {
@@ -22,6 +30,19 @@ module.exports = (sequelize, DataTypes) => {
     pet_uid: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
+    },
+    name: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      defaultValue: "Fearsome Wyrm"
+    },
+    images: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    price: {
+      type: DataTypes.DECIMAL(20, 2),
+      allowNull: false
     },
     description: {
       type: DataTypes.STRING,
