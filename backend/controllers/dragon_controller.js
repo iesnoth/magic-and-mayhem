@@ -7,7 +7,7 @@ const { User, Pet } = db
 
 //CREATE a dragon
 const createDragon = asyncHandler(async (req, res) => {
-    console.log(req.user.user_uid)
+    //console.log(req.user.user_uid)
     const { userUuid, name, images, price, description } = req.body
 
     if (!req.user) {

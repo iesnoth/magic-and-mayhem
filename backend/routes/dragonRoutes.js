@@ -6,7 +6,7 @@ const { protect } = require('../middleware/tokenMiddleware')
 //POST
 //create new dragon
 //access restricted to vendor role
-router.post('/', protect, createDragon)
+router.post('/', createDragon)
 
 //READ
 router.get('/', protect, getDragons)
