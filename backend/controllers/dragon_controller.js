@@ -51,7 +51,7 @@ const getOneDragon = asyncHandler(async (req, res) => {
             },
             include: 'artist'
         })
-        
+
         return res.json(dragon)
     } catch (err) {
         console.log(err)
@@ -62,17 +62,23 @@ const getOneDragon = asyncHandler(async (req, res) => {
 //UPDATE a dragon by id
 
 const updateDragon = asyncHandler(async (req, res) => {
+    const user = req.user
+    const artistId = user.id
     const pet_uid = req.params.uuid
     const { name, images, price, description } = req.body
     try {
-        const dragon = await Pet.findOne({ where: { pet_uid, artistId } })
-        dragon.name = name
-        dragon.images = images
-        dragon.price = price
-        dragon.description = description
-
-        await dragon.save()
-
+        await Pet.update(
+            {
+                name,
+                images,
+                price,
+                description
+            },
+            {
+                where: { pet_uid, artistId }
+            }
+        )
+        const dragon = await Pet.findOne({where: { pet_uid, artistId }})
         return res.json(dragon)
     } catch (err) {
         console.log(err)
@@ -92,8 +98,8 @@ const deleteDragon = asyncHandler(async (req, res) => {
                 artistId
             }
         })
-        
-        return res.json({message: `${dragon} Dragon deleted.`})
+
+        return res.json({ message: `${dragon} Dragon deleted.` })
     } catch (err) {
         console.log(err)
         return res.status(500).json(err)

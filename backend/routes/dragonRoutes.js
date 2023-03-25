@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const { createDragon, getDragons, getOneDragon, deleteDragon } = require('../controllers/dragon_controller')
+const { createDragon, getDragons, getOneDragon, updateDragon, deleteDragon } = require('../controllers/dragon_controller')
 const { protect } = require('../middleware/tokenMiddleware')
 //const { protectDragon } = require('../middleware/dragonMiddleware')
 
@@ -16,9 +16,9 @@ router.get('/', protect, getDragons)
 router.get('/:uuid', protect, getOneDragon)
 
 //UPDATE DRAGON
-router.put('/:uuid', protect, getOneDragon)
+router.put('/:uuid', protect, updateDragon)
 
-//UPDATE DRAGON
+//DELETE DRAGON
 router.delete('/:uuid', protect, deleteDragon)
 
 module.exports = router
