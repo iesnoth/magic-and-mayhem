@@ -7,7 +7,7 @@ const { User } = db
 
 //create a user
 const signUp = asyncHandler(async (req, res) => {
-    const { name, email, password, vendor } = req.body
+    const { name, email, password, role } = req.body
 
     //hash password
     const salt = await bcrypt.genSalt(10)
@@ -18,7 +18,7 @@ const signUp = asyncHandler(async (req, res) => {
         name,
         email,
         password: hashedPassword,
-        vendor
+        role
     })
 
     return res.json(user)
