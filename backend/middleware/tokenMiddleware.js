@@ -11,11 +11,9 @@ const protect = asyncHandler(async (req, res, next) => {
         try {
             //Get token from header by removing the bearer
             token = req.headers.authorization.split(' ')[1]
-            //console.log('token split')
             //Verify the token against secret
             const decoded = jwt.verify(token, process.env.JWT_SECRET)
             const uuid = decoded.id
-            //console.log(uuid)
             //Get user from the token payload
             req.user = await User.findAll({
                 where: { user_uid: uuid },
