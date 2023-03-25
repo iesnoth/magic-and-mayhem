@@ -7,7 +7,9 @@
 //Has everything the Buyer Profile has, as well as:
     //a page for them to view all the dragons they've put up for sale, and give them an option to edit/delete unsold dragons
     
-import React from "react";
+import React,{useEffect} from "react";
+import {useNavigate} from 'react-router-dom';
+import {useSelector, useDispatch} from 'react-redux'
 
 function VenderProfile() {
     return (

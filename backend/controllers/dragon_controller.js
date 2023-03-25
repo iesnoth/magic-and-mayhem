@@ -20,7 +20,18 @@ const createDragon = asyncHandler(async (req, res) => {
 }
 )
 
+//READ: get all dragons
+//PUBLIC access
+const getAllDragons = asyncHandler(async (req,res)=>{
+    const dragons = await Pet.findAll({
+        include:'artist'
+    })
+    return res.json(dragons)
+})
+
+
 //READ: get all dragons by a certain artist
+//PRIVATE access
 const getDragons = asyncHandler(async (req, res) => {
     const user = req.user
     const artistId = user.id
@@ -110,5 +121,6 @@ module.exports = {
     getDragons,
     getOneDragon,
     updateDragon,
-    deleteDragon
+    deleteDragon,
+    getAllDragons
 }
