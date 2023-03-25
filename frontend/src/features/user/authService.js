@@ -18,12 +18,16 @@ const createUser = async(userData) => {
 
 //READ login
 
-//READ a user in their account page
 
-//DELETE a user from account page (admins will also be able to delete users, but only the user can update)
+//Logout
+const logout = () =>{
+    localStorage.removeItem('user')
+}
+
 
 const authService = {
     createUser,
+    logout
 }
 
 export default authService;
