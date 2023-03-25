@@ -3,7 +3,7 @@ const asyncHandler = require('express-async-handler')
 const db = require('../models')
 const { User } = db
 
-const protectUser = asyncHandler(async (req, res, next) => {
+const protect = asyncHandler(async (req, res, next) => {
     let token
     if (req.headers.authorization &&
         req.headers.authorization.startsWith('Bearer')
@@ -33,4 +33,4 @@ const protectUser = asyncHandler(async (req, res, next) => {
 })
 
 
-module.exports = { protectUser }
+module.exports = { protect }

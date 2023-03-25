@@ -2,9 +2,6 @@ const asyncHandler = require('express-async-handler')
 const db = require('../models')
 const { User, Pet } = db
 
-//CRUD functions for the dragons db
-//uses the Dragon and User models
-
 //CREATE a dragon
 const createDragon = asyncHandler(async (req, res) => {
     const user = req.user
@@ -16,12 +13,12 @@ const createDragon = asyncHandler(async (req, res) => {
         console.log(user)
         const newDragon = Pet.create({ name, images, price, description, artistId: user.id })
 
-            return res.json(newDragon)
-        } catch (err) {
-            console.log(err)
-            return res.status(500).json(err)
-        }
+        return res.json(newDragon)
+    } catch (err) {
+        console.log(err)
+        return res.status(500).json(err)
     }
+}
 )
 
 //READ: get all dragons by a certain artist
@@ -30,7 +27,8 @@ const getDragons = asyncHandler(async (req, res) => {
     const artistId = user.id
     try {
         const dragons = await Pet.findAll({
-            where: { artistId }
+            where: { artistId },
+            include: 'artist'
         })
         return res.json(dragons)
     } catch (err) {
@@ -42,12 +40,18 @@ const getDragons = asyncHandler(async (req, res) => {
 
 //READ: get one dragon by id
 const getOneDragon = asyncHandler(async (req, res) => {
-    const uuid = req.params.uuid
+    const user = req.user
+    const artistId = user.id
+    const pet_uid = req.params.uuid
     try {
-        const dragon = await Pet.findById({
-            where: { pet_uid: uuid },
+        const dragon = await Pet.findOne({
+            where: {
+                pet_uid,
+                artistId
+            },
             include: 'artist'
         })
+        
         return res.json(dragon)
     } catch (err) {
         console.log(err)
@@ -58,15 +62,18 @@ const getOneDragon = asyncHandler(async (req, res) => {
 //UPDATE a dragon by id
 
 const updateDragon = asyncHandler(async (req, res) => {
-    const uuid = req.params.uuid
+    const pet_uid = req.params.uuid
     const { name, images, price, description } = req.body
     try {
-        const pet = await Pet.findOne({ where: { uuid } })
-        pet.name = name
-        pet.images = images
-        pet.price = price
-        pet.description = description
+        const dragon = await Pet.findOne({ where: { pet_uid, artistId } })
+        dragon.name = name
+        dragon.images = images
+        dragon.price = price
+        dragon.description = description
 
+        await dragon.save()
+
+        return res.json(dragon)
     } catch (err) {
         console.log(err)
         return res.status(500).json(err)
@@ -74,12 +81,29 @@ const updateDragon = asyncHandler(async (req, res) => {
 })
 
 //DELETE a dragon by id
-
-//
+const deleteDragon = asyncHandler(async (req, res) => {
+    const user = req.user
+    const artistId = user.id
+    const pet_uid = req.params.uuid
+    try {
+        const dragon = await Pet.destroy({
+            where: {
+                pet_uid,
+                artistId
+            }
+        })
+        
+        return res.json({message: `${dragon} Dragon deleted.`})
+    } catch (err) {
+        console.log(err)
+        return res.status(500).json(err)
+    }
+})
 
 module.exports = {
     createDragon,
     getDragons,
     getOneDragon,
-    updateDragon
+    updateDragon,
+    deleteDragon
 }

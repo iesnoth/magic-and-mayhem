@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const { signUp, logIn, getMe, deleteUser } = require('../controllers/user_controller')
-const { protectUser } = require('../middleware/userMiddleware')
+const { protect } = require('../middleware/tokenMiddleware')
 
 //POST
 //adding new user
@@ -13,7 +13,7 @@ router.post('/login', logIn)
 
 //READ
 //allow user to access their own account info
-router.get('/me', protectUser, getMe)
+router.get('/me', protect, getMe)
 
 //DELETE
 //for admins only at the moment
