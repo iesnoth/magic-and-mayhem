@@ -21,7 +21,17 @@ const signUp = asyncHandler(async (req, res) => {
         role
     })
 
-    return res.json(user)
+    if (user) {
+        res.status(201).json({
+            user_uid: user.user_uid,
+            name: user.name,
+            email: user.email,
+            token: generateToken(user.user_uid)
+        })
+    } else {
+        res.status(400)
+        throw new Error('Invalid user data')
+    }
 
 })
 

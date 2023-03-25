@@ -4,9 +4,15 @@
 //roles will be a checkbox which ask if the user will be selling dragons or not. The default role is buyer.
 //After submission, forms will be sent to the users table in the db
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaUser } from 'react-icons/fa'
 import LoginModal from '../components/LoginModal'
+//useSelector selects from initial state in authSlice
+//useDispatch will use function from the authSlice
+import { useSelector, useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
+import { createUser, reset } from '../features/user/authSlice'
 
 function SignUp() {
     const [show, setShow] = useState(false)
@@ -20,6 +26,24 @@ function SignUp() {
     })
     const { name, email, password, password2, role } = formData
 
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+
+    const { user, isLoading, isError, isSuccess, message } = useSelector
+        ((state) => state.auth)
+
+    useEffect(() => {
+        if (isError) {
+            toast.error(message)
+        }
+        //if the creation of user is successful, or if they are already logged in, redirects to homepage
+        if (isSuccess) {
+            navigate('/')
+        }
+
+        dispatch(reset())
+    }, [user, isError, isSuccess, message, navigate, dispatch])
+
     const onChange = (e) => {
         setFormData((prevState) => ({
             ...prevState,
@@ -29,6 +53,16 @@ function SignUp() {
 
     const onSubmit = (e) => {
         e.preventDefault()
+
+        if (password !== password2) {
+            toast.error('Passwords need to match.')
+        }
+        else {
+            const userData = {
+                name, email, password, role
+            }
+            dispatch(createUser(userData))
+        }
     }
 
     return (
@@ -90,8 +124,7 @@ function SignUp() {
                         <select name="role" id="role" value={role} onChange={onChange}>
                             <option value="buyer">To adopt</option>
                             <option value="vendor">To sell</option>
-                            <option value="vendor">To adopt and sell</option>
-                            <option value="buyer">That's a loaded question</option>
+                            <option value="both">To adopt and sell</option>
                         </select>
                     </div>
                     <div className="form-group">
