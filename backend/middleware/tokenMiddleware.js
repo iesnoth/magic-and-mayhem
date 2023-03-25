@@ -1,9 +1,9 @@
 const jwt = require('jsonwebtoken')
 const asyncHandler = require('express-async-handler')
-const { User } = require('../models/user')
+const db = require('../models')
+const { User } = db
 
 const protect = asyncHandler(async (req, res, next) => {
-    console.log("blah")
     let token
     if (req.headers.authorization &&
         req.headers.authorization.startsWith('Bearer')
@@ -13,9 +13,12 @@ const protect = asyncHandler(async (req, res, next) => {
             token = req.headers.authorization.split(' ')[1]
             //Verify the token against secret
             const decoded = jwt.verify(token, process.env.JWT_SECRET)
+            const myUuid = decoded.id
             //Get user from the token payload
-            req.user = await User.findById(decoded.user_uid).select('-password')
-            //calls next piece of middleware
+            req.user = await User.findOne({
+                where: { user_uid: myUuid },
+                include: 'dragons'
+            })          
             next()
         } catch (error) {
             console.log(error)
@@ -23,15 +26,9 @@ const protect = asyncHandler(async (req, res, next) => {
             throw new Error('Authorization needed.')
         }
     }
-    else{
-        console.log("skipped first if")
-    }
     if (!token) {
         res.status(401)
         throw new Error('Not authorized, no token.')
-    }
-    else{
-        console.log("you've skipped everything")
     }
 })
 

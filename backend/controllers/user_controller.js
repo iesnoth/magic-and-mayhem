@@ -20,35 +20,9 @@ const signUp = asyncHandler(async (req, res) => {
         password: hashedPassword,
         vendor
     })
+
     return res.json(user)
 
-})
-
-//find all
-const listAll = asyncHandler(async (req, res) => {
-    try {
-        const users = await User.findAll()
-
-        return res.json(users)
-    } catch (err) {
-        console.log(err)
-        return res.status(500).json(err)
-    }
-})
-
-//find one
-const searchByName = asyncHandler(async (req, res) => {
-    const name = req.params.name
-    try {
-        const users = await User.findOne({
-            where: { name }
-        })
-
-        return res.json(users)
-    } catch (err) {
-        console.log(err)
-        return res.status(500).json(err)
-    }
 })
 
 //POST
@@ -59,7 +33,9 @@ const logIn = asyncHandler(async (req, res) => {
 
     //Check if email is in the database
 
-    const user = await User.findOne({ email })
+    const user = await User.findOne({
+        where: { email }
+    })
 
     if (!user) {
         res.status(400)
@@ -84,8 +60,7 @@ const logIn = asyncHandler(async (req, res) => {
 //show one user's profile to only the user based on their token
 const getMe = asyncHandler(async (req, res) => {
     //got user in the middleware
-    console.log("Do you see me?")
-    res.json({"message":"See me!"})
+    res.status(200).json(req.user)
 })
 
 //Generate a JWT Token
@@ -97,7 +72,7 @@ const generateToken = (id) => {
 }
 
 //delete a user
-const deleteUser =  asyncHandler(async (req, res) => {
+const deleteUser = asyncHandler(async (req, res) => {
     const uuid = req.params.user_uid
     try {
         const deleteUser = await User.destroy({
@@ -116,8 +91,6 @@ const deleteUser =  asyncHandler(async (req, res) => {
 
 module.exports = {
     signUp,
-    listAll,
-    searchByName,
     logIn,
     getMe,
     deleteUser

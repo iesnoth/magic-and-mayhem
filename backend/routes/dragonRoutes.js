@@ -1,11 +1,24 @@
 const express = require('express')
 const router = express.Router()
-const { createDragon } = require('../controllers/dragon_controller')
-//const { protect } = require('../middleware/tokenMiddleware')
+const { createDragon, getDragons, getOneDragon, updateDragon, deleteDragon } = require('../controllers/dragon_controller')
+const { protect } = require('../middleware/tokenMiddleware')
+//const { protectDragon } = require('../middleware/dragonMiddleware')
 
 //POST
 //create new dragon
 //access restricted to vendor role
-router.post('/', createDragon)
+router.post('/', protect, createDragon)
+
+//READ
+router.get('/', protect, getDragons)
+
+//READ ONE
+router.get('/:uuid', protect, getOneDragon)
+
+//UPDATE DRAGON
+router.put('/:uuid', protect, updateDragon)
+
+//DELETE DRAGON
+router.delete('/:uuid', protect, deleteDragon)
 
 module.exports = router
