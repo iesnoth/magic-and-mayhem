@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import './App.css';
 import NavBar from "./components/NavBar";
 import Gallery from "./pages/Gallery";
@@ -10,7 +10,7 @@ import { Route, Routes } from "react-router-dom";
 
 
 function App() {
-  
+
 
   return (
     <>
@@ -23,6 +23,7 @@ function App() {
           <Route path="/CreateUpdateDragon" element={<CreateUpdateDragon />} />
         </Routes>
       </div>
+
     </>
   );
 }

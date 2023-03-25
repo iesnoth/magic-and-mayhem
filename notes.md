@@ -27,17 +27,3 @@ sequelize db:migrate- initialize after the model and migration are set up
 sequelize seed:generate --name 'NAME'= creates a seeder folder with a new file in it
 sequelize migration:generate --name <migration name>- creates a migration skeleton
 sequelize db:migrate:undo- undoes last migration
-
-    name: {
-      type: DataTypes.STRING,
-      allowNull: true,
-      defaultValue: "Fearsome Wyrm"
-    },
-    images: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    price: {
-      type: DataTypes.DECIMAL(20, 2),
-      allowNull: false
-    },
