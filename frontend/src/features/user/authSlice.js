@@ -1,5 +1,4 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import { create } from 'domain'
 import authService from './authService'
 //get user from localStorage
 const user = JSON.parse(localStorage.getItem('user'))
@@ -17,6 +16,18 @@ export const createUser = createAsyncThunk('auth/createUser', async (user, thunk
     try {
         //returning payload from signUp  function in the server
         return await authService.createUser(user)
+    } catch (error) {
+        const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString()
+        //puts message as payload on error
+        return thunkAPI.rejectWithValue(message)
+    }
+})
+
+//login user
+export const login = createAsyncThunk('auth/login', async (user, thunkAPI) => {
+    try {
+        //returning payload from signUp  function in the server
+        return await authService.login(user)
     } catch (error) {
         const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString()
         //puts message as payload on error
@@ -52,6 +63,23 @@ export const authSlice = createSlice({
                 state.user = action.payload
             })
             .addCase(createUser.rejected, (state, action) => {
+                state.isLoading = false
+                state.isError = true
+                state.message = action.payload
+                state.user = null
+            })
+            .addCase(logout.fulfilled, (state) => {
+                state.user = null
+            })
+            .addCase(login.pending, (state) => {
+                state.isLoading = true
+            })
+            .addCase(login.fulfilled, (state, action) => {
+                state.isLoading = false
+                state.isSuccess = true
+                state.user = action.payload
+            })
+            .addCase(login.rejected, (state, action) => {
                 state.isLoading = false
                 state.isError = true
                 state.message = action.payload

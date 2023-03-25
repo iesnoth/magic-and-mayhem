@@ -16,8 +16,18 @@ const createUser = async(userData) => {
     return response.data
 }
 
-//READ login
+// login user
+const login = async(userData) => {
+    //makes request to server
+    const response = await axios.post(API_URL + 'login',userData)
+    //check for response from server
+    if(response.data){
+        //store the response as a string in local storage, includes token
+        localStorage.setItem('user',JSON.stringify(response.data))
+    }
 
+    return response.data
+}
 
 //Logout
 const logout = () =>{
@@ -27,7 +37,8 @@ const logout = () =>{
 
 const authService = {
     createUser,
-    logout
+    logout,
+    login
 }
 
 export default authService;

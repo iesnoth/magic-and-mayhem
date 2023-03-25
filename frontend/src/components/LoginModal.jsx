@@ -2,18 +2,39 @@
 // It will take the email and password of the user, compare them to the database, and let the user in if they match, and send an error if it fails.
 //Upon failure, the modal will give an error, but also give the option to sign up. Clicking sign up will take them to the sign up page.
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaSignInAlt } from 'react-icons/fa'
 import './LoginModal.css'
+import { useSelector, useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
+import { login, reset } from '../features/user/authSlice'
 
 function LoginModal(props) {
-   
     const [formData, setFormData] = useState({
         email: '',
         password: ''
 
     })
     const { email, password } = formData
+
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+
+    const { user, isLoading, isError, isSuccess, message } = useSelector
+        ((state) => state.auth)
+
+        useEffect(() => {
+            if (isError) {
+                toast.error(message)
+            }
+            //if the creation of user is successful, or if they are already logged in, redirects to homepage
+            if (isSuccess || user) {
+                navigate('/')
+            }
+    
+            dispatch(reset())
+        }, [user, isError, isSuccess, message, navigate, dispatch])
 
     const onChange = (e) => {
         setFormData((prevState) => ({
@@ -24,6 +45,13 @@ function LoginModal(props) {
 
     const onSubmit = (e) => {
         e.preventDefault()
+
+        const userData = {
+            email,
+            password
+        }
+
+        dispatch(login(userData))
     }
 
     return (
