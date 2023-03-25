@@ -3,7 +3,7 @@ const asyncHandler = require('express-async-handler')
 const db = require('../models')
 const { User } = db
 
-const protect = asyncHandler(async (req, res, next) => {
+const protectUser = asyncHandler(async (req, res, next) => {
     let token
     if (req.headers.authorization &&
         req.headers.authorization.startsWith('Bearer')
@@ -14,13 +14,19 @@ const protect = asyncHandler(async (req, res, next) => {
             //console.log('token split')
             //Verify the token against secret
             const decoded = jwt.verify(token, process.env.JWT_SECRET)
-            const uuid = decoded.id
+            const myUuid = decoded.id
             //console.log(uuid)
             //Get user from the token payload
-            req.user = await User.findAll({
-                where: { user_uid: uuid },
+            req.user = await User.findOne({
+                where: { user_uid: myUuid },
                 include: 'dragons'
             })
+            // uuid = await User.findOne({
+            //     where: { user_uid: myUuid },
+            //     attributes:['user_uid'],
+            //     raw:true
+            // })
+            // console.log("uuid in the first controller", uuid)
             //calls next piece of middleware            
             next()
         } catch (error) {
@@ -36,4 +42,4 @@ const protect = asyncHandler(async (req, res, next) => {
 })
 
 
-module.exports = { protect }
+module.exports = { protectUser }
