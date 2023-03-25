@@ -46,10 +46,9 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    vendor: {
-      type: DataTypes.BOOLEAN,
-      allowNull: true,
-      defaultValue: false
+    role: {
+      type: DataTypes.STRING,
+      allowNull:false
     }
   }, {
     sequelize,
