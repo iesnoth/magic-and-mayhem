@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import './App.css';
+import './App.scss';
 import NavBar from "./components/NavBar";
 import Gallery from "./pages/Gallery";
 import VenderProfile from "./pages/VenderProfile";
@@ -14,23 +14,23 @@ import 'react-toastify/dist/ReactToastify.css'
 function App() {
   const [theme, setTheme] = useState('light');
   const toggleTheme = () => {
-    if(theme === 'light'){
+    if (theme === 'light') {
       setTheme('dark');
     }
-    else{
+    else {
       setTheme('light')
     }
   };
-  useEffect(()=>{
+  useEffect(() => {
     document.body.className = theme;
-  },[theme]);
+  }, [theme]);
 
   return (
     <>
-      <div className={`App ${theme}`}>
+      <div id="body" className={`App ${theme}`}>
         <NavBar />
-        <button onClick={toggleTheme}>{theme} mode</button>
         <div className="container">
+          <button onClick={toggleTheme}>Toggle Theme</button>
           <Routes>
             <Route path="/" element={<Gallery />} />
             <Route path="/profile" element={<VenderProfile />} />
@@ -39,6 +39,24 @@ function App() {
           </Routes>
           <ToastContainer />
         </div>
+        <div className="footer-images">
+          {{ theme } === 'light' ? (
+            <>
+              <div className="light">
+                <img src="../assets/leftlightfooter.png" alt="left footer stalagmite" />
+                <img src="../assets/rightlightfoot.png" alt="right footer stagamite" />
+              </div>
+            </>
+          ) : (
+            <>
+              <div className="dark">
+                <img src="../assets/leftdrkfoot.png" alt="left footer stalagmite" />
+                <img src="../assets/rightdarkfoot.png" alt="right footer stagamite" />
+              </div>
+            </>
+          )}
+          </div>
+        <footer className="footer"></footer>
       </div>
     </>
   );

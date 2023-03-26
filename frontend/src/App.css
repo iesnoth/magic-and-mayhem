@@ -1,37 +1,69 @@
+@import url("https://fonts.googleapis.com/css2?family=Charm&family=Edu+NSW+ACT+Foundation:wght@500&family=Klee+One:wght@600&family=Shadows+Into+Light&display=swap");
+#body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 .navbar {
   display: flex;
   justify-content: flex-end;
-  background-color: grey;
+  margin-top: auto;
 }
 
 .list {
   list-style: none;
   margin: 20px;
-
 }
 
 .link {
   text-decoration: none;
-  color: black;
+  font-family: "Klee One", cursive;
 }
 
 .container {
   text-align: center;
 }
 
+.footer-images {
+  height: auto;
+}
+
+footer {
+  width: 100%;
+  height: 100px;
+  margin-top: auto;
+}
+footer img {
+  z-index: 55;
+}
+
 /* Dark and light themes */
 .dark {
-  background-color: #333;
-  color: #fff;
+  background-color: #3E375F;
+  color: #e9e3f0;
+}
+.dark .navbar,
+.dark footer {
+  background-color: #1a1534;
+}
+.dark .link {
+  color: #e9e3f0;
 }
 
 .light {
-  background-color: #fff;
-  color: #333;
+  background-color: #E5E0EA;
+}
+.light .navbar,
+.light footer {
+  background-color: #958b9e;
+}
+.light .link {
+  color: #302D3D;
 }
 
 @media only screen and (min-width: 768px) {
   .navbar {
     display: flex;
   }
-}
+}/*# sourceMappingURL=App.css.map */
