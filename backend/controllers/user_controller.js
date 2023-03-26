@@ -26,6 +26,7 @@ const signUp = asyncHandler(async (req, res) => {
             user_uid: user.user_uid,
             name: user.name,
             email: user.email,
+            role: user.role,
             token: generateToken(user.user_uid)
         })
     } else {
@@ -57,6 +58,7 @@ const logIn = asyncHandler(async (req, res) => {
             user_uid: user.user_uid,
             name: user.name,
             email: user.email,
+            role:user.role,
             token: generateToken(user.user_uid)
         })
     } else {

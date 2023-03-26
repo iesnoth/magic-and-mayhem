@@ -11,8 +11,12 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate({ Pet }) {
       // define association here
+      //vendor association
       this.hasMany(Pet, { foreignKey: 'artistId', as: 'dragons' })
+      //buyer association
+      this.hasMany(Pet, { foreignKey: 'buyerId', as: 'adoptedDragons'})
     }
+      
     // hides the id from the public
     toJSON() {
       return { ...this.get(), id: undefined }
@@ -48,8 +52,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     role: {
       type: DataTypes.STRING,
-      allowNull:true,
-      defaultValue:"buyer"
+      allowNull:false
     }
   }, {
     sequelize,

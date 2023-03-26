@@ -34,6 +34,10 @@ module.exports = {
         type:DataTypes.INTEGER,
         allowNull: false
       },
+      buyerId:{
+        type:DataTypes.INTEGER,
+        allowNull:true
+      },
       createdAt: {
         allowNull: false,
         type: DataTypes.DATE

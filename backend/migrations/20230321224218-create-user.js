@@ -29,8 +29,7 @@ module.exports = {
       },
       role: {
         type: DataTypes.STRING,
-        allowNull: true,
-        defaultValue: "buyer"
+        allowNull: false
       },
       createdAt: {
         allowNull: false,

@@ -121,7 +121,8 @@ function SignUp() {
                     </div>
                     <div className="form-input">
                         <label for="role">Why are you here?</label>
-                        <select name="role" id="role" value={role} onChange={onChange}>
+                        <select name="role" id="role" value={role} onChange={onChange} required>
+                            <option value="" disabled selected hidden>That's a loaded question</option>
                             <option value="buyer">To adopt</option>
                             <option value="vendor">To sell</option>
                             <option value="both">To adopt and sell</option>

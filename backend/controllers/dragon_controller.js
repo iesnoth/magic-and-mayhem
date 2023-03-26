@@ -96,6 +96,31 @@ const updateDragon = asyncHandler(async (req, res) => {
     }
 })
 
+//UPDATE a dragon by id
+
+const adoptADragon = asyncHandler(async (req, res) => {
+    const user = req.user
+    const buyerId = user.id
+    const pet_uid = req.params.uuid
+    //const { buyerId } = req.body
+    try {
+        await Pet.update(
+            {
+                buyerId
+            },
+            {
+                where: { pet_uid },
+                include: ['buyer','artist']
+            }
+        )
+        const dragon = await Pet.findOne({where: { pet_uid }})
+        return res.json(dragon)
+    } catch (err) {
+        console.log(err)
+        return res.status(500).json(err)
+    }
+})
+
 //DELETE a dragon by id
 const deleteDragon = asyncHandler(async (req, res) => {
     const user = req.user
@@ -122,5 +147,6 @@ module.exports = {
     getOneDragon,
     updateDragon,
     deleteDragon,
-    getAllDragons
+    getAllDragons,
+    adoptADragon
 }
