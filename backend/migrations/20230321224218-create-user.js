@@ -7,7 +7,7 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         type: DataTypes.INTEGER,
-        primaryKey:true
+        primaryKey: true
       },
       user_uid: {
         type: DataTypes.UUID,
@@ -29,7 +29,7 @@ module.exports = {
       },
       role: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: false
       },
       createdAt: {
         allowNull: false,

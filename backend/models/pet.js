@@ -13,10 +13,13 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       this.belongsTo(User, {
         foreignKey: 'artistId',
-        as: 'artist'
+        as: 'artist',
         })
+      this.belongsTo(User,{
+        foreignKey: 'buyerId',
+        as:'buyer'
+      })
     }
-
     toJSON() {
     return { ...this.get(), id: undefined, artistId: undefined }
     }
