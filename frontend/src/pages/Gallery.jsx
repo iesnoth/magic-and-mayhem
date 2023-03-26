@@ -3,10 +3,10 @@
 
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import { reset } from "../features/dragons/dragonSlice";
 import { useNavigate } from "react-router-dom";
 import '../App.css'
-import { getDragons } from "../features/dragons/dragonSlice";
+import EachDragon from "../components/EachDragon";
+import { getDragons, reset } from "../features/dragons/dragonSlice";
 
 function Gallery() {
     const navigate = useNavigate()
@@ -33,9 +33,10 @@ function Gallery() {
                 <section className="content">
                     {dragons.length > 0 ? (
                         <div className="dragons">
-                            {dragons.map((dragons) => (
-                                <Datacard key={dragons._id} dragons={dragons} />
-                            ))}
+                            {/* {dragons.map((dragons) => (
+                                <EachDragon key={dragons._id} dragons={dragons} />
+                            ))} */}
+                            <EachDragon/>
                         </div>
                     ) : (<h3>No Dragons found.</h3>)}
                 </section>
