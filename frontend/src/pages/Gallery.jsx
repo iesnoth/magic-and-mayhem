@@ -35,7 +35,7 @@ function Gallery() {
                     {dragons.length > 0 ? (
                         <div className="dragons">
                             {dragons.map((dragons) => (
-                                <Datacard key={dragons._id} dragons={dragons} />
+                                <EachDragon key={dragons._id} dragons={dragons} />
                             ))}
                         </div>
                     ) : (<h3>No Dragons found.</h3>)}
