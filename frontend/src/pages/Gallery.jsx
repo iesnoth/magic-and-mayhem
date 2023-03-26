@@ -33,8 +33,8 @@ function Gallery() {
                         <section className="content">
                             {dragons.length > 0 ? (
                                 <div className="dragons">
-                                    {dragons.map((dragons) => (
-                                        <EachDragon key={dragons._id} dragons={dragons} />
+                                    {dragons.map((dragon) => (
+                                        <EachDragon key={dragon.pet_uid} dragon={dragon} />
                                     ))}
                                 </div>
                             ) : (<h3>No Dragons found.</h3>)}

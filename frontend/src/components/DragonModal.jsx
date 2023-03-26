@@ -1,14 +1,14 @@
 //import React, { useState, useEffect } from "react";
 
-function DragonModal(props){
-    return(
-        <>
-        <div>
-            <p>This is the dragon modal</p>
-        </div>
-        </>
-    )
+// function DragonModal({dragon},props){
+//     return(
+//         <>
+//         <div className={`modal ${props.show ? 'show' : ''}`}>
+//            <h2>{dragon.name}</h2>
+//         </div>
+//         </>
+//     )
 
-}
+// }
 
-export default DragonModal
+// export default DragonModal

@@ -52,11 +52,11 @@ const handleSubmit = (event) => {
     event.preventDefault();
 }
 
-if ( !style || !images || !price || !description) {
+if ( !images || !price || !description) {
     toast.error('Populate all required fields')
 } else {
     const dragonData = {
-        nameDragon, nameArtist, images, price, description
+        name, nameArtist, images, price, description
     }
 
     dispatch(createDragon(dragonData))
@@ -73,19 +73,11 @@ if ( !style || !images || !price || !description) {
                     <h1>Add your Dragon</h1>
                     <div>
                         <label htmlFor="nameDragon">Name of dragon</label>
-                        <input id="name" type="text" name="name" value={nameDragon} onChange={onChange}  />
+                        <input id="name" type="text" name="name" value={name} onChange={onChange}  />
                     </div>
                     <div>
                         <label htmlFor="nameArtist">Artist</label>
                         <input id="nameArtist" type="text" name="nameArtist" value={nameArtist} onChange={onChange} />
-                    </div>
-                    <div>
-                        <label htmlFor="color">Color</label>
-                        <input type="text" name="color" id="color" value={color} onChange={onChange} />
-                    </div>
-                    <div>
-                        <label htmlFor="style">Style</label>
-                        <input type="text" name="style" id="style" value={style} onChange={onChange} />
                     </div>
                     <div>
                         <label htmlFor="images">Image</label>

@@ -6,36 +6,36 @@
 
 
 import { useState } from "react";
-import DragonModal from "./DragonModal";
 
-function EachDragon() {
+function EachDragon({ dragon }) {
     let [show, setShow] = useState(false)
 
-    return (
-        <>
-            <div className="simpleStyle" onClick={()=> setShow(true)}>
-                <p>This is the simple view</p>
-                <p>It contains a picture, name, artist, and price</p>
-            </div>
-            <DragonModal
-                onClose={()=>setShow(false)}
-                show={show}
-                />
-        </>
+
+    const dragonModal = () => {
+        return (
+            <>
+                <div className={`modal ${show ? 'show' : ''}`}>
+                    <p>This is large style</p>
+                    <p>It will show up in a modal.</p>
+                    <p>It will contain name, images, artist name, price, description, and an "adopt" button</p>
+                    <button>Adopt Me!</button>
+                    <button onClose={() => setShow(false)}
+                    show={show}>Close</button>
+                </div>
+            </>
+        )
+    }
+
+    return(
+        <div>
+            <div className="simpleStyle" onClick={() => setShow(true)}>
+                    <div><h3>{dragon.name}</h3></div>
+                    <div><img className="small-image" src={dragon.images} alt={dragon.description} /></div>
+                    <div><h4>Artist: {dragon.artist.name}</h4></div>
+                    <div><h4 className="price">{dragon.price}</h4></div>         
+                </div>
+        </div>
     )
-
-
-    // const detailView = () => {
-    //     return(
-    //         <>
-    //         <div className='detailStyle'>
-    //             <p>This is large style</p>
-    //             <p>It will show up in a modal.</p>
-    //             <p>It will contain name, images, artist name, price, description, and an "adopt" button</p>
-    //         </div>
-    //         </>
-    //     )
-    // }
 
 }
 
