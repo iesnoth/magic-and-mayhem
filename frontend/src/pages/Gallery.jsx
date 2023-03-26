@@ -3,10 +3,9 @@
 
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import { getSightings, reset } from "../features/sightings/sightingSlice";
+import { getDragons, reset } from "../features/dragons/dragonSlice";
 import { useNavigate } from "react-router-dom";
 import '../App.css'
-import { getDragons } from "../features/dragons/dragonSlice";
 
 function Gallery() {
     const navigate = useNavigate()
@@ -34,7 +33,7 @@ function Gallery() {
                     {dragons.length > 0 ? (
                         <div className="dragons">
                             {dragons.map((dragons) => (
-                                <Datacard key={dragons._id} dragons={dragons} />
+                                <EachDragons key={dragons._id} dragons={dragons} />
                             ))}
                         </div>
                     ) : (<h3>No Dragons found.</h3>)}
