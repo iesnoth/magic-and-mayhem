@@ -3,22 +3,24 @@
 //images, price, and a short description of the dragon
 //After being submitted, the dragon is turned into an EachDragon component and sent to the Gallery and the vender's account page.
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from 'react-toastify';
+import { useSelector, useDispatch } from 'react-redux';
+import {createDragon, reset} from '../features/dragons/dragonSlice'
+
 
 function CreateUpdateDragon() {
 
 const [formData, setFormData] = useState({
-    nameDragon: '',
+    name: '',
     nameArtist: '',
-    color: '',
-    style: '',
     images: '',
     price: '',
     description: '',
 })
 
-const { nameDragon, nameArtist, color, style, images, price, description } = formData
+const { name, nameArtist, images, price, description } = formData
 
 const navigate = useNavigate()
 const dispatch = useDispatch()
@@ -50,11 +52,11 @@ const handleSubmit = (event) => {
     event.preventDefault();
 }
 
-if (!nameDragon || !nameArtist || !color || !style || !images || !price || !description) {
+if ( !style || !images || !price || !description) {
     toast.error('Populate all required fields')
 } else {
     const dragonData = {
-        nameDragon, nameArtist, color, style, images, price, description
+        nameDragon, nameArtist, images, price, description
     }
 
     dispatch(createDragon(dragonData))

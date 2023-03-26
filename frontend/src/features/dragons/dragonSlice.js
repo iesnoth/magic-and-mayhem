@@ -1,5 +1,3 @@
-//do we need this?
-
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
 import dragonService from './dragonService'
 
@@ -90,7 +88,7 @@ export const deleteDragon = createAsyncThunk(
 )
 
 export const dragonSlice = createSlice({
-    name: 'dragons',
+    name: 'dragon',
     initialState,
     reducers: {
         reset: (state) => initialState,
@@ -149,7 +147,7 @@ export const dragonSlice = createSlice({
                 state.isLoading = false
                 state.isSuccess = true
                 state.dragons = state.dragons.filter(
-                    (dragon) => dragons._id !== action.payload.id
+                    (dragons) => dragons._id !== action.payload.id
                 )
             })
             .addCase(deleteDragon.rejected, (state, action) => {

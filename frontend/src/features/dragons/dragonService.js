@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API_URL = 'api/dragons/'
+const API_URL = '/dragons/'
 
 const createDragon = async (dragonData, token) => {
 
@@ -42,6 +42,7 @@ const deleteDragon = async(dragonID, token) => {
     }
 
     const response = await axios.delete(API_URL + dragonID, config)
+    console.log(`${response} deleted`)
 }
 
 const dragonService = {
