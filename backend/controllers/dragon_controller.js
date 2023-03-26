@@ -10,8 +10,7 @@ const createDragon = asyncHandler(async (req, res) => {
 
     try {
         const user = await User.findOne({ where: { user_uid: uuid } })
-        console.log(user)
-        const newDragon = Pet.create({ name, images, price, description, artistId: user.id })
+        const newDragon = await Pet.create({ name, images, price, description, artistId: user.id })
 
         return res.json(newDragon)
     } catch (err) {
@@ -21,7 +20,18 @@ const createDragon = asyncHandler(async (req, res) => {
 }
 )
 
+//READ: get all dragons
+//PUBLIC access
+const getAllDragons = asyncHandler(async (req,res)=>{
+    const dragons = await Pet.findAll({
+        include:'artist'
+    })
+    return res.json(dragons)
+})
+
+
 //READ: get all dragons by a certain artist
+//PRIVATE access
 const getDragons = asyncHandler(async (req, res) => {
     const user = req.user
     const artistId = user.id
@@ -86,6 +96,31 @@ const updateDragon = asyncHandler(async (req, res) => {
     }
 })
 
+//UPDATE a dragon by id
+
+const adoptADragon = asyncHandler(async (req, res) => {
+    const user = req.user
+    const buyerId = user.id
+    const pet_uid = req.params.uuid
+    //const { buyerId } = req.body
+    try {
+        await Pet.update(
+            {
+                buyerId
+            },
+            {
+                where: { pet_uid },
+                include: ['buyer','artist']
+            }
+        )
+        const dragon = await Pet.findOne({where: { pet_uid }})
+        return res.json(dragon)
+    } catch (err) {
+        console.log(err)
+        return res.status(500).json(err)
+    }
+})
+
 //DELETE a dragon by id
 const deleteDragon = asyncHandler(async (req, res) => {
     const user = req.user
@@ -111,5 +146,7 @@ module.exports = {
     getDragons,
     getOneDragon,
     updateDragon,
-    deleteDragon
+    deleteDragon,
+    getAllDragons,
+    adoptADragon
 }

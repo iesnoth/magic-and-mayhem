@@ -64,10 +64,7 @@ This will have several benefits:
 
 ### Citations
 1. "Material UI React Tutorial" from Traversy Media: https://www.youtube.com/watch?v=vyJU9efvUtQ
-2. Modal Tutorials:
-    - "How to Create React Modal Popup using Material UI" by Digamber https://www.positronx.io/create-react-modal-popup-with-material-ui/
-    - "Create an Interactive Material UI Dialog in React" by Uncle Big Bay https://www.copycat.dev/blog/material-ui-dialog/
-
+2. Modal Tutorial by Thi Tran: https://medium.com/tinyso/how-to-create-a-modal-component-in-react-from-basic-to-advanced-a3357a2a716a
 3. JWT and Middleware help from Traversy Media: https://www.youtube.com/watch?v=enopDSs3DRw&t=1303s
 4. Sequelize ORM Tutorial by Classsed https://www.youtube.com/watch?v=3qlnR9hK-lQ&t=2229s&ab_channel=Classsed
 5. SO MUCH Sequelize documentation, but specifically about associations and functions. https://sequelize.org/docs/v6/getting-started/

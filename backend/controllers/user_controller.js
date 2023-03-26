@@ -7,7 +7,7 @@ const { User } = db
 
 //create a user
 const signUp = asyncHandler(async (req, res) => {
-    const { name, email, password, vendor } = req.body
+    const { name, email, password, role } = req.body
 
     //hash password
     const salt = await bcrypt.genSalt(10)
@@ -18,10 +18,21 @@ const signUp = asyncHandler(async (req, res) => {
         name,
         email,
         password: hashedPassword,
-        vendor
+        role
     })
 
-    return res.json(user)
+    if (user) {
+        res.status(201).json({
+            user_uid: user.user_uid,
+            name: user.name,
+            email: user.email,
+            role: user.role,
+            token: generateToken(user.user_uid)
+        })
+    } else {
+        res.status(400)
+        throw new Error('Invalid user data')
+    }
 
 })
 
@@ -47,6 +58,7 @@ const logIn = asyncHandler(async (req, res) => {
             user_uid: user.user_uid,
             name: user.name,
             email: user.email,
+            role:user.role,
             token: generateToken(user.user_uid)
         })
     } else {
