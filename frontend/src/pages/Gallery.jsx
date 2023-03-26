@@ -3,6 +3,7 @@
 
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
+
 import { useNavigate } from "react-router-dom";
 import '../App.css'
 import EachDragon from "../components/EachDragon";
@@ -33,10 +34,9 @@ function Gallery() {
                 <section className="content">
                     {dragons.length > 0 ? (
                         <div className="dragons">
-                            {/* {dragons.map((dragons) => (
-                                <EachDragon key={dragons._id} dragons={dragons} />
-                            ))} */}
-                            <EachDragon/>
+                            {dragons.map((dragons) => (
+                                <Datacard key={dragons._id} dragons={dragons} />
+                            ))}
                         </div>
                     ) : (<h3>No Dragons found.</h3>)}
                 </section>
