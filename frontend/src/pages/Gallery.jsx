@@ -11,12 +11,13 @@ function Gallery() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const { dragons, isError, isLoading, message } = useSelector((state) => state.dragons)
+    const {user} = useSelector((state)=>state.auth)
 
     useEffect(() => {
                 if (isError) {
                     console.log(message);
                 }
-        
+                
                 dispatch(getDragons())
         
                 return () => {
@@ -28,7 +29,11 @@ function Gallery() {
             return (
                 <div className="gallery">
                     <div>
-                        <h1>Welcome to Magic and Mayhem</h1>
+                        {user ? (
+                            <h1>Welcome Back to Magic and Mayhem, {user.name}!</h1>
+                        ):(
+                            <h1>Welcome to Magic and Mayhem</h1>
+                        )}                     
                         <h2>Choose a Dragon!</h2>
                         <section className="content">
                             {dragons.length > 0 ? (

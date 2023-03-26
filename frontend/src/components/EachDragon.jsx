@@ -15,25 +15,36 @@ function EachDragon({ dragon }) {
         return (
             <>
                 <div className={`modal ${show ? 'show' : ''}`}>
-                    <p>This is large style</p>
-                    <p>It will show up in a modal.</p>
-                    <p>It will contain name, images, artist name, price, description, and an "adopt" button</p>
-                    <button>Adopt Me!</button>
-                    <button onClose={() => setShow(false)}
-                    show={show}>Close</button>
+                    <div className="modal-content">
+                        <div className="modal-header">{dragon.name}</div>
+                        <section className="modal-body">
+                            <div>Artist: {dragon.artist.name}</div>
+                            <div>{dragon.images}</div>
+                            <div className="sidebar">
+                                <div>{dragon.price}</div>
+                                <div>{dragon.description}</div>
+                            </div>
+                        </section>
+                        <div className="modal-footer">
+                            <button>Adopt Me!</button>
+                            <button onClick={() => setShow(false)}
+                                show={show}>Close</button>
+                        </div>
+                    </div>
                 </div>
             </>
         )
     }
 
-    return(
+    return (
         <div>
             <div className="simpleStyle" onClick={() => setShow(true)}>
-                    <div><h3>{dragon.name}</h3></div>
-                    <div><img className="small-image" src={dragon.images} alt={dragon.description} /></div>
-                    <div><h4>Artist: {dragon.artist.name}</h4></div>
-                    <div><h4 className="price">{dragon.price}</h4></div>         
-                </div>
+                <div><h3>{dragon.name}</h3></div>
+                <div><img className="small-image" src={dragon.images} alt={dragon.description} /></div>
+                <div><h4>Artist: {dragon.artist.name}</h4></div>
+                <div><h4 className="price">{dragon.price}</h4></div>
+            </div>
+            {dragonModal()}
         </div>
     )
 
