@@ -1,5 +1,3 @@
-//do we need this?
-
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
 import dragonService from './dragonService'
 

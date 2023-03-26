@@ -3,7 +3,7 @@
 
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import { getSightings, reset } from "../features/sightings/sightingSlice";
+import { reset } from "../features/dragons/dragonSlice";
 import { useNavigate } from "react-router-dom";
 import '../App.css'
 import { getDragons } from "../features/dragons/dragonSlice";
