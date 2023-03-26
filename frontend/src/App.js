@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import './App.css';
+import './App.scss';
 import NavBar from "./components/NavBar";
 import Gallery from "./pages/Gallery";
 import VenderProfile from "./pages/VenderProfile";
@@ -29,7 +29,7 @@ function App() {
     <>
       <div className={`App ${theme}`}>
         <NavBar />
-        <button onClick={toggleTheme}>{theme} mode</button>
+        <button onClick={toggleTheme}>Toggle Theme</button>
         <div className="container">
           <Routes>
             <Route path="/" element={<Gallery />} />

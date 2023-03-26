@@ -1,18 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Charm&family=Edu+NSW+ACT+Foundation:wght@500&family=Klee+One:wght@600&family=Shadows+Into+Light&display=swap");
+.h1 {
+  font-family: "Charm", cursive;
+}
+
 .navbar {
   display: flex;
   justify-content: flex-end;
-  background-color: grey;
 }
 
 .list {
   list-style: none;
   margin: 20px;
-
 }
 
 .link {
   text-decoration: none;
-  color: black;
+  font-family: "Klee One", cursive;
 }
 
 .container {
@@ -21,17 +24,28 @@
 
 /* Dark and light themes */
 .dark {
-  background-color: #333;
-  color: #fff;
+  background-color: #3E375F;
+  color: #e9e3f0;
+}
+.dark .navbar {
+  background-color: #22162B;
+}
+.dark .link {
+  color: #e9e3f0;
 }
 
 .light {
-  background-color: #fff;
-  color: #333;
+  background-color: #E5E0EA;
+}
+.light .navbar {
+  background-color: #BFB8C6;
+}
+.light .link {
+  color: #302D3D;
 }
 
 @media only screen and (min-width: 768px) {
   .navbar {
     display: flex;
   }
-}
+}/*# sourceMappingURL=App.css.map */
