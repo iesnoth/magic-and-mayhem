@@ -71,8 +71,35 @@ if (!nameDragon || !nameArtist || !color || !style || !images || !price || !desc
                     <h1>Add your Dragon</h1>
                     <div>
                         <label htmlFor="nameDragon">Name of dragon</label>
-                        <input type="text" name="" id="" />
+                        <input id="name" type="text" name="name" value={nameDragon} onChange={onChange}  />
                     </div>
+                    <div>
+                        <label htmlFor="nameArtist">Artist</label>
+                        <input id="nameArtist" type="text" name="nameArtist" value={nameArtist} onChange={onChange} />
+                    </div>
+                    <div>
+                        <label htmlFor="color">Color</label>
+                        <input type="text" name="color" id="color" value={color} onChange={onChange} />
+                    </div>
+                    <div>
+                        <label htmlFor="style">Style</label>
+                        <input type="text" name="style" id="style" value={style} onChange={onChange} />
+                    </div>
+                    <div>
+                        <label htmlFor="images">Image</label>
+                        <input id="image-url" type="text" name="images" value={images} onChange={onChange} />
+                    </div>
+                    <div>
+                        <label htmlFor="price">Price</label>
+                        <input type="number" id="price" name="price" value={price} onChange={onChange} />
+                    </div>
+                    <div>
+                        <label htmlFor="DragonDetails">Dragon Details</label>
+                        <div>
+                            <textarea placeholder="Describe your Dragon" rows="5" name="description" value={description} onChange={onChange} ></textarea>
+                        </div>
+                    </div>
+                    <button className="dragonbutton" type="submit">Add your Dragon!</button>
                 </div>
             </form>
           </div>

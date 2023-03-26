@@ -112,7 +112,7 @@ export const dragonSlice = createSlice({
                 state.message = action.payload
             })
 
-            //get user soecific dragons
+            //get user specific dragons
             .addCase(getMyDragons.pending, (state) => {
                 state.isLoading = true
             })
