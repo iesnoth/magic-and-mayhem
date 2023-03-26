@@ -1,26 +1,48 @@
 //This is the home page, and shows a grid of all the available dragons for sale.
 //It will go by a page format, not be an infinite scroll, so it will need to have an entry limit and page icons at the bottom.
 
-import React from "react";
-
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from 'react-redux';
+import { getSightings, reset } from "../features/sightings/sightingSlice";
+import { useNavigate } from "react-router-dom";
+import '../App.css'
+import { getDragons } from "../features/dragons/dragonSlice";
 
 function Gallery() {
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+    const { dragons, isError, isLoading, message } = useSelector((state) => state.dragons)
+
+    useEffect(() => {
+        if (isError) {
+            console.log(message);
+        }
+
+        dispatch(getDragons())
+
+        return () => {
+            dispatch(reset())
+        }
+    }, [isError, message, navigate, dispatch])
+
     return (
-        <div>
+        <div className="gallery">
             <div>
                 <h1>Welcome to Magic and Mayhem</h1>
                 <h2>Choose a Dragon!</h2>
-                <div className="gallery-grid">
-                    <img src="" alt="nothing rn" />
-                    <img src="" alt="nothing rn" />
-                    <img src="" alt="nothing rn" />
-                    <img src="" alt="nothing rn" />
-                    <img src="" alt="nothing rn" />
-                    <img src="" alt="nothing rn" />
-                </div>
+                <section className="content">
+                    {dragons.length > 0 ? (
+                        <div className="dragons">
+                            {dragons.map((dragons) => (
+                                <Datacard key={dragons._id} dragons={dragons} />
+                            ))}
+                        </div>
+                    ) : (<h3>No Dragons found.</h3>)}
+                </section>
+                
             </div>
         </div>
-    );
+    )
 }
 
 export default Gallery;
