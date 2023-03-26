@@ -34,10 +34,10 @@ function NavBar() {
                 </li>
                 {user ? (<>
                     <li className="list">
-                        <CustomLink className="link" to="/VenderProfile">Profile</CustomLink>
+                        <CustomLink className="link" to="/profile">Profile</CustomLink>
                     </li>
                     <li className="list">
-                        <CustomLink className="link" to="/CreateUpdateDragon">Create post</CustomLink>
+                        <CustomLink className="link" to="/createdragon">Create Dragon</CustomLink>
                     </li>
                     <li className="list">
                         <CustomLink id="logout" className="link" onClick={onLogout}>Logout</CustomLink>
@@ -46,7 +46,7 @@ function NavBar() {
                 ) : (
                     <>
                         <li className="list">
-                            <CustomLink className="link" to="/SignUp">Sign up</CustomLink>
+                            <CustomLink className="link" to="/signup">Sign up</CustomLink>
                         </li>
                         <li className="list">
                             <CustomLink className="link" onClick={() => setShow(true)}>Log In</CustomLink>
