@@ -4,7 +4,7 @@ import NavBar from "./components/NavBar";
 import Gallery from "./pages/Gallery";
 import VenderProfile from "./pages/VenderProfile";
 import SignUp from "./pages/SignUp";
-//import CreateUpdateDragon from "./pages/CreateUpdateDragon";
+import CreateUpdateDragon from "./pages/CreateUpdateDragon";
 import { Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'
