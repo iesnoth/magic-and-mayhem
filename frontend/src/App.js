@@ -43,15 +43,15 @@ function App() {
           {{ theme } === 'light' ? (
             <>
               <div className="light">
-                <img src="frontend/src/assets/leftlightfooter.png" alt="left footer stalagmite" />
-                <img src="./assets/rightlightfoot.png" alt="right footer stagamite" />
+                <img src="../assets/leftlightfooter.png" alt="left footer stalagmite" />
+                <img src="../assets/rightlightfoot.png" alt="right footer stagamite" />
               </div>
             </>
           ) : (
             <>
               <div className="dark">
-                <img src="./assets/leftdrkfoot.png" alt="left footer stalagmite" />
-                <img src="./assets/rightdarkfoot.png" alt="right footer stagamite" />
+                <img src="../assets/leftdrkfoot.png" alt="left footer stalagmite" />
+                <img src="../assets/rightdarkfoot.png" alt="right footer stagamite" />
               </div>
             </>
           )}
