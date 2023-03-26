@@ -16,7 +16,7 @@ export const getDragons = createAsyncThunk(
     'dragons/getAll',
     async (thunkAPI) => {
         try {
-            return await dragonsService.getDragons()
+            return await dragonService.getDragons()
         } catch (error) {
             const message = 
                 (error.response &&
@@ -37,7 +37,7 @@ export const createDragon = createAsyncThunk(
     async (dragonsData, thunkAPI) => {
         try {
             const token = thunkAPI.getState().auth.user.token
-            return await dragonsService.createDragon(dragonsData, token)
+            return await dragonService.createDragon(dragonsData, token)
         } catch (error) {
             const message = 
                 (error.response &&
@@ -76,7 +76,7 @@ export const deleteDragon = createAsyncThunk(
     async (id, thunkAPI) => {
         try {
             const token = thunkAPI.getState().auth.user.token
-            return await dragonsService.deleteDragon(id, token)
+            return await dragonService.deleteDragon(id, token)
         } catch (error) {
             const message = 
                 (error.response &&
