@@ -4,9 +4,9 @@
   "description": "dragon adoption site",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"node index.js",
-    "server":"nodemon index.js --ignore client"
+    "dev": "nodemon index",
+    "start": "node index",
+    "test": "echo 'Error: no test specified' && exit 1"
   },
   "author": "iesnoth",
   "license": "ISC",
@@ -14,11 +14,13 @@
     "bcryptjs": "^2.4.3",
     "brcypt": "^1.0.1",
     "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "express-async-handler": "^1.2.0",
     "jsonwebtoken": "^9.0.0",
+    "path": "^0.12.7",
     "pg": "^8.10.0",
     "pg-hstore": "^2.3.4",
-    "sequelize": "^6.29.3"
+    "sequelize": "^6.30.0"
   }
 }
