@@ -14,20 +14,22 @@ function CreateUpdateDragon() {
 
 const [formData, setFormData] = useState({
     name: '',
-    nameArtist: '',
+    artist: user.name,
     images: '',
     price: '',
     description: '',
 })
 
-const { name, nameArtist, images, price, description } = formData
+const { name, artist, images, price, description } = formData
 
 const navigate = useNavigate()
 const dispatch = useDispatch()
 
 const { dragon, isError, isSuccess, message } = useSelector(
     (state) => state.dragon
-)
+    )
+    
+const {user} = useSelector((state) => state.auth)
 
 useEffect(() => {
     if (isError) {
@@ -56,7 +58,7 @@ if ( !images || !price || !description) {
     toast.error('Populate all required fields')
 } else {
     const dragonData = {
-        name, nameArtist, images, price, description
+        name, artist, images, price, description
     }
 
     dispatch(createDragon(dragonData))
@@ -74,10 +76,6 @@ if ( !images || !price || !description) {
                     <div>
                         <label htmlFor="nameDragon">Name of dragon</label>
                         <input id="name" type="text" name="name" value={name} onChange={onChange}  />
-                    </div>
-                    <div>
-                        <label htmlFor="nameArtist">Artist</label>
-                        <input id="nameArtist" type="text" name="nameArtist" value={nameArtist} onChange={onChange} />
                     </div>
                     <div>
                         <label htmlFor="images">Image</label>
