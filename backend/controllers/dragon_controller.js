@@ -24,6 +24,9 @@ const createDragon = asyncHandler(async (req, res) => {
 //PUBLIC access
 const getAllDragons = asyncHandler(async (req,res)=>{
     const dragons = await Pet.findAll({
+        where:{
+            buyerId:null
+        },
         include:'artist'
     })
     return res.json(dragons)
