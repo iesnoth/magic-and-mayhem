@@ -49,8 +49,9 @@
   max-width: 600px;
 }
 
-.modal-left.img {
+.modal-image {
   width: 85vw;
+  max-width: 100%;
 }
 
 .modal-header,
@@ -59,7 +60,7 @@
 }
 
 @media only screen and (max-width: 1000px) {
-  .modal-left.img {
+  .modal-content {
     width: 85vw;
   }
 }/*# sourceMappingURL=EachDragon.css.map */
