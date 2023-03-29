@@ -1,0 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Charm&family=Edu+NSW+ACT+Foundation:wght@500&family=Klee+One:wght@600&family=Shadows+Into+Light&display=swap");
+.navbar {
+  height: 120px;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: auto;
+}
+
+.link {
+  color: pink;
+}
+
+.list {
+  list-style: none;
+  margin: 20px;
+}
+
+.link {
+  text-decoration: none;
+  font-family: "Klee One", cursive;
+}/*# sourceMappingURL=NavBar.css.map */

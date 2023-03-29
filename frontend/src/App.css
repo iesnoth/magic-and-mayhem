@@ -5,22 +5,6 @@
   flex-direction: column;
 }
 
-.navbar {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: auto;
-}
-
-.list {
-  list-style: none;
-  margin: 20px;
-}
-
-.link {
-  text-decoration: none;
-  font-family: "Klee One", cursive;
-}
-
 .container {
   text-align: center;
 }

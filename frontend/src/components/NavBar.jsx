@@ -5,6 +5,7 @@ import { logout, reset } from '../features/user/authSlice';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faUser, faArrowCircleRight, faArrowCircleLeft, faDragon, faPenFancy } from "@fortawesome/free-solid-svg-icons";
 import LoginModal from "./LoginModal";
+import './NavBar.scss';
 
 
 function NavBar() {
