@@ -19,6 +19,7 @@ nav {
   position: sticky;
   top: 0;
   z-index: 40;
+  flex-shrink: 1;
 }
 
 header {
@@ -43,11 +44,12 @@ header #right-dark {
   margin-right: 7%;
   margin-bottom: 3%;
   padding: 75px;
-  border-radius: 15%;
+  border-radius: 35px;
 }
 
 .dragons {
   display: flex;
+  flex-wrap: wrap;
 }
 
 footer {

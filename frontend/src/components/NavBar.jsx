@@ -29,9 +29,9 @@ function NavBar() {
                 </div>
                 <div className="welcome">
                     {user ? (
-                        <h1>Welcome Back to Magic and Mayhem, {user.name}!</h1>
+                        <h1 style={{fontSize:'2vw', paddingBottom:24}}>Welcome Back to Magic and Mayhem, {user.name}!</h1>
                     ) : (
-                        <h1>Welcome to Magic and Mayhem</h1>
+                        <h1 style={{fontSize:'2vw'}}>Welcome to Magic and Mayhem</h1>
                     )}
                 </div>
                 <div className="icons">
