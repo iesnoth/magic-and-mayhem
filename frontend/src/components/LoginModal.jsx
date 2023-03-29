@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { login, reset } from '../features/user/authSlice'
 
+
 function LoginModal(props) {
     const [formData, setFormData] = useState({
         email: '',
