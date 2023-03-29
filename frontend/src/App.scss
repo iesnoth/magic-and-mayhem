@@ -21,6 +21,7 @@ nav {
   position: sticky;
   top: 0;
   z-index: 40;
+  flex-shrink: 1;
 }
 
 header {
@@ -46,17 +47,15 @@ header {
   margin-left: 7%;
   margin-right: 7%;
   margin-bottom: 3%;
-  background-color: beige;
   padding: 75px;
-  border-radius: 15%;
-
+  border-radius: 35px;
 }
 
-.gallery {
-  text-align: center;
-  //overflow: scroll;
-
+.dragons {
+  display: flex;
+  flex-wrap: wrap;
 }
+
 
 
 footer {
@@ -114,6 +113,11 @@ footer {
   .link {
     color: $font-dark-color;
   }
+
+  .modal-content {
+    background-color: $primary-dark-color;
+  }
+
 }
 
 // LIGHT THEME
@@ -143,7 +147,13 @@ footer {
   .link {
     color: $font-light-color;
   }
+
+  .modal-content {
+    background-color: $primary-light-color;
+  }
+
 }
+
 
 @media only screen and (min-width: 768px) {
   .navbar {

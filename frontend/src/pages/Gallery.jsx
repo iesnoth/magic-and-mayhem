@@ -11,7 +11,6 @@ function Gallery() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const { dragons, isError, isLoading, message } = useSelector((state) => state.dragons)
-    const {user} = useSelector((state)=>state.auth)
 
     useEffect(() => {
                 if (isError) {
@@ -27,21 +26,21 @@ function Gallery() {
 
 
             return (
-                <div className="gallery">
                     <div>               
                         <h2>Choose a Dragon!</h2>
-                        <section className="content">
+                        <div className="content">
                             {dragons.length > 0 ? (
                                 <div className="dragons">
                                     {dragons.map((dragon) => (
+                                        <div className="one-dragon">
                                         <EachDragon key={dragon.pet_uid} dragon={dragon} />
+                                        </div>
                                     ))}
                                 </div>
                             ) : (<h3>No Dragons found.</h3>)}
-                        </section>
+                        </div>
                         
                     </div>
-                </div>
             )
 }
 

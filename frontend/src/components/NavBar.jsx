@@ -29,9 +29,9 @@ function NavBar() {
                 </div>
                 <div className="welcome">
                     {user ? (
-                        <h1>Welcome Back to Magic and Mayhem, {user.name}!</h1>
+                        <h1 style={{fontSize:'2vw', paddingBottom:24}}>Welcome Back to Magic and Mayhem, {user.name}!</h1>
                     ) : (
-                        <h1>Welcome to Magic and Mayhem</h1>
+                        <h1 style={{fontSize:'2vw'}}>Welcome to Magic and Mayhem</h1>
                     )}
                 </div>
                 <div className="icons">
@@ -46,13 +46,15 @@ function NavBar() {
                                 <FontAwesomeIcon icon={faUser} size="2x" />
                             </CustomLink>
                         </li>
-                        {/* {user.role === 'vendor' ? (
-                            <li className="list">
+                        {user.role == "buyer" ? (
+                        <><FontAwesomeIcon icon={faDragon} size="2x" color="#605c72"/></>
+                            ) :
+                            (<li className="list">
                                 <CustomLink className="link" to="/createdragon">
-                                    <FontAwesomeIcon icon={faDragon} size="2x" />
+                                <FontAwesomeIcon icon={faDragon} size="2x"/>
                                 </CustomLink>
                             </li>)
-                        } */}
+                        }
                         <li className="list">
                             <CustomLink id="logout" className="link" onClick={onLogout}>
                                 <FontAwesomeIcon icon={faArrowCircleRight} size="2x" />
