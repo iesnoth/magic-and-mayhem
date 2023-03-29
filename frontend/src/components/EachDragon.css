@@ -1,3 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Charm&family=Edu+NSW+ACT+Foundation:wght@500&family=Klee+One:wght@600&family=Shadows+Into+Light&display=swap");
+.eachDragon {
+  display: flex;
+  width: 500px;
+  height: 700px;
+  background-color: aqua;
+  margin: 15px;
+  border-radius: 10%;
+}
+.eachDragon .simpleStyle {
+  display: block;
+  align-items: center;
+  justify-content: center;
+}
+.eachDragon .simpleStyle .small-image {
+  width: 80%;
+}
+
 .modal {
   position: fixed;
   left: 0;

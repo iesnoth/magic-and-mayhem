@@ -1,67 +1,96 @@
 //font and color variables
 @import "variables.scss";
+@import "rules.scss";
 
-#body{
+#body {
   min-height: 100vh;
-  display:flex;
+  display: flex;
   flex-direction: column;
 }
 
-// .navbar {
-//   display: flex;
-//   justify-content: flex-end;
-//   margin-top: auto;
-// }
+h1 {
+  font-family: $charm;
+}
 
-// .list {
-//   list-style: none;
-//   margin: 20px;
+h2,
+h3 {
+  font-family: $body-font;
+}
 
-// }
-
-// .link {
-//   text-decoration: none;
-//   font-family: $body-font;
-// }
+.navbar {
+  position: sticky;
+  top: 0;
+}
 
 .container {
   text-align: center;
+  margin: 3%;
+  background-color: beige;
+  padding: 75px;
+  border-radius: 15%;
 }
 
-.footer-images{
+.gallery {
+  text-align: center;
+  //overflow: scroll;
+
+}
+
+.footer-images {
   height: auto;
 }
 
-footer{
-  width:100%;
-  height:100px;
+footer {
+  width: 100%;
+  height: 100px;
   margin-top: auto;
-  img{
-    z-index:55;
+
+  img {
+    z-index: 55;
   }
 }
 
 /* Dark and light themes */
 .dark {
-  background-color: $primary-dark-color;
+  background-color: $secondary-dark-color;
   color: $font-dark-color;
+
+  button {
+    @include button($font-dark-color, $secondary-dark-color)
+  }
+
+  .container {
+    background-color: $primary-dark-color;
+  }
+
   .navbar,
-  footer{
+  footer {
     background-color: $secondary-dark-color;
   }
-  .link{
-    color:$font-dark-color;
+
+  .link {
+    color: $font-dark-color;
   }
 }
 
 .light {
-  background-color: $primary-light-color;
+  background-color: $secondary-light-color;
+
+  button {
+    @include button ($secondary-light-color, $font-light-color)
+  }
+
+  .container {
+    background-color: $primary-light-color;
+  }
+
   .navbar,
-  footer{
+  footer {
     background-color: $secondary-light-color;
   }
-  .link{
-    color:$font-light-color;
+
+  .link {
+    color: $font-light-color;
   }
 }
 

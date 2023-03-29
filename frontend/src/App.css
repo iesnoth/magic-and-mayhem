@@ -1,11 +1,34 @@
 @import url("https://fonts.googleapis.com/css2?family=Charm&family=Edu+NSW+ACT+Foundation:wght@500&family=Klee+One:wght@600&family=Shadows+Into+Light&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Charm&family=Edu+NSW+ACT+Foundation:wght@500&family=Klee+One:wght@600&family=Shadows+Into+Light&display=swap");
 #body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
+h1 {
+  font-family: "Charm", cursive;
+}
+
+h2,
+h3 {
+  font-family: "Klee One", cursive;
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+}
+
 .container {
+  text-align: center;
+  margin: 3%;
+  background-color: beige;
+  padding: 75px;
+  border-radius: 15%;
+}
+
+.gallery {
   text-align: center;
 }
 
@@ -24,8 +47,30 @@ footer img {
 
 /* Dark and light themes */
 .dark {
-  background-color: #3E375F;
+  background-color: #1a1534;
   color: #e9e3f0;
+}
+.dark button {
+  color: #e9e3f0;
+  background: 0 0;
+  font: 11px;
+  font-family: "Klee One", cursive;
+  letter-spacing: 3px;
+  text-decoration: none;
+  padding: 8px 10px;
+  border: 1px solid #1a1534;
+  float: right;
+  border-radius: 4px;
+  float: left;
+  text-align: center;
+  margin-left: 60px;
+}
+.dark button:hover {
+  background: #e9e3f0;
+  color: #1a1534;
+}
+.dark .container {
+  background-color: #3E375F;
 }
 .dark .navbar,
 .dark footer {
@@ -36,6 +81,28 @@ footer img {
 }
 
 .light {
+  background-color: #958b9e;
+}
+.light button {
+  color: #958b9e;
+  background: 0 0;
+  font: 11px;
+  font-family: "Klee One", cursive;
+  letter-spacing: 3px;
+  text-decoration: none;
+  padding: 8px 10px;
+  border: 1px solid #302D3D;
+  float: right;
+  border-radius: 4px;
+  float: left;
+  text-align: center;
+  margin-left: 60px;
+}
+.light button:hover {
+  background: #958b9e;
+  color: #302D3D;
+}
+.light .container {
   background-color: #E5E0EA;
 }
 .light .navbar,

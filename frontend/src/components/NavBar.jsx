@@ -22,46 +22,59 @@ function NavBar() {
 
     return (
         <nav>
+
             <ul className="navbar">
-                <li className="list">
-                    <CustomLink className="link" to="/">
-                        <FontAwesomeIcon icon={faHome} />
-                    </CustomLink>
-                </li>
-                {user ? (<>
+                <div >
+                    <img className="logo" src={require("../assets/icon.png")} alt="Magic and Mayhem logo" />
+                </div>
+                <div className="welcome">
+                    {user ? (
+                        <h1>Welcome Back to Magic and Mayhem, {user.name}!</h1>
+                    ) : (
+                        <h1>Welcome to Magic and Mayhem</h1>
+                    )}
+                </div>
+                <div className="icons">
                     <li className="list">
-                        <CustomLink className="link" to="/profile">
-                            <FontAwesomeIcon icon={faUser} />
+                        <CustomLink className="link" to="/">
+                            <FontAwesomeIcon icon={faHome} size="2x" />
                         </CustomLink>
                     </li>
-                    <li className="list">
-                        <CustomLink className="link" to="/createdragon">
-                            <FontAwesomeIcon icon={faDragon} />
-                        </CustomLink>
-                    </li>
-                    <li className="list">
-                        <CustomLink id="logout" className="link" onClick={onLogout}>
-                            <FontAwesomeIcon icon={faArrowCircleRight} />
-                        </CustomLink>
-                    </li>
-                </>
-                ) : (
-                    <>
+                    {user ? (<>
                         <li className="list">
-                            <CustomLink className="link" to="/signup">
-                                <FontAwesomeIcon icon={faPenFancy} />
+                            <CustomLink className="link" to="/profile">
+                                <FontAwesomeIcon icon={faUser} size="2x" />
                             </CustomLink>
                         </li>
                         <li className="list">
-                            <CustomLink className="link" onClick={() => setShow(true)}>
-                                <FontAwesomeIcon icon={faArrowCircleLeft} />
+                            <CustomLink className="link" to="/createdragon">
+                                <FontAwesomeIcon icon={faDragon} size="2x" />
                             </CustomLink>
-                            <LoginModal
-                                onClose={() => setShow(false)}
-                                show={show} />
+                        </li>
+                        <li className="list">
+                            <CustomLink id="logout" className="link" onClick={onLogout}>
+                                <FontAwesomeIcon icon={faArrowCircleRight} size="2x" />
+                            </CustomLink>
                         </li>
                     </>
-                )}
+                    ) : (
+                        <>
+                            <li className="list">
+                                <CustomLink className="link" to="/signup">
+                                    <FontAwesomeIcon icon={faPenFancy} size="2x" />
+                                </CustomLink>
+                            </li>
+                            <li className="list">
+                                <CustomLink className="link" onClick={() => setShow(true)}>
+                                    <FontAwesomeIcon icon={faArrowCircleLeft} size="2x" />
+                                </CustomLink>
+                                <LoginModal
+                                    onClose={() => setShow(false)}
+                                    show={show} />
+                            </li>
+                        </>
+                    )}
+                </div>
             </ul>
         </nav>
     )
