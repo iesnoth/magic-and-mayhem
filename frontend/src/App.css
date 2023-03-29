@@ -1,47 +1,84 @@
 @import url("https://fonts.googleapis.com/css2?family=Charm&family=Edu+NSW+ACT+Foundation:wght@500&family=Klee+One:wght@600&family=Shadows+Into+Light&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Charm&family=Edu+NSW+ACT+Foundation:wght@500&family=Klee+One:wght@600&family=Shadows+Into+Light&display=swap");
 #body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-.navbar {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: auto;
+h1 {
+  font-family: "Charm", cursive;
 }
 
-.list {
-  list-style: none;
-  margin: 20px;
-}
-
-.link {
-  text-decoration: none;
+h2,
+h3 {
   font-family: "Klee One", cursive;
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
 }
 
 .container {
   text-align: center;
+  margin-top: 3%;
+  margin-left: 7%;
+  margin-right: 7%;
+  margin-bottom: 3%;
+  background-color: beige;
+  padding: 75px;
+  border-radius: 15%;
 }
 
-.footer-images {
-  height: auto;
+.gallery {
+  text-align: center;
 }
 
 footer {
   width: 100%;
   height: 100px;
-  margin-top: auto;
+  bottom: 0;
+  display: flex;
 }
-footer img {
-  z-index: 55;
+footer .footer-images {
+  height: 350px;
+}
+footer #left-light {
+  justify-content: flex-start;
+}
+footer #right-light {
+  justify-content: flex-end;
 }
 
 /* Dark and light themes */
 .dark {
   background-color: #3E375F;
   color: #e9e3f0;
+}
+.dark button {
+  color: #e9e3f0;
+  background: 0 0;
+  font: 11px;
+  font-family: "Klee One", cursive;
+  letter-spacing: 3px;
+  text-decoration: none;
+  padding: 8px 10px;
+  border: 1px solid #1a1534;
+  float: right;
+  border-radius: 4px;
+  float: left;
+  text-align: center;
+  margin-left: 60px;
+  box-shadow: 5px 5px 5px #e9e3f0;
+}
+.dark button:hover {
+  background: #e9e3f0;
+  color: #1a1534;
+}
+.dark .container {
+  background-color: #1a1534;
+  box-shadow: 10px 20px 10px 5px #53487c;
 }
 .dark .navbar,
 .dark footer {
@@ -52,7 +89,31 @@ footer img {
 }
 
 .light {
+  background-color: #958b9e;
+}
+.light button {
+  color: #958b9e;
+  background: 0 0;
+  font: 11px;
+  font-family: "Klee One", cursive;
+  letter-spacing: 3px;
+  text-decoration: none;
+  padding: 8px 10px;
+  border: 1px solid #302D3D;
+  float: right;
+  border-radius: 4px;
+  float: left;
+  text-align: center;
+  margin-left: 60px;
+  box-shadow: 5px 5px 5px #958b9e;
+}
+.light button:hover {
+  background: #958b9e;
+  color: #302D3D;
+}
+.light .container {
   background-color: #E5E0EA;
+  box-shadow: 10px 20px 10px 5px #6e6576;
 }
 .light .navbar,
 .light footer {

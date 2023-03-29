@@ -1,7 +1,9 @@
 import axios from 'axios';
 //uses CRUD functions from the API and uses them in its own functions, with added authentication
 //necessary for localStorage login/out functions
-const API_URL = 'users/'
+
+const API_URL = '/api/users/'
+
 
 //CREATE a user
 const createUser = async (userData) => {

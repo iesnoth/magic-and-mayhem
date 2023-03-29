@@ -4,7 +4,7 @@
 //At this time, the BUY button will only take the dragon out of the Gallery, put it in the buyer's pets page, and update the artist's dragons page.
 //I hope we can figure this out, because it would give a cool dynamic quality to the site, even though it isn't functional as a store yet.
 
-
+import './EachDragon.scss';
 import { useState } from "react";
 
 function EachDragon({ dragon }) {
@@ -16,19 +16,21 @@ function EachDragon({ dragon }) {
             <>
                 <div className={`modal ${show ? 'show' : ''}`}>
                     <div className="modal-content">
-                        <div className="modal-header">{dragon.name}</div>
-                        <section className="modal-body">
-                            <div>Artist: {dragon.artist.name}</div>
-                            <div>{dragon.images}</div>
+                        <div className="modal-left">
+                            <div><img src={dragon.images} alt={dragon.description} /></div>
+                            <h1>{dragon.name}</h1>
+                        </div>
+                        <div className='modal-right'>
                             <div className="sidebar">
+                                <div>Artist: {dragon.artist.name}</div>
                                 <div>{dragon.price}</div>
                                 <div>{dragon.description}</div>
                             </div>
-                        </section>
-                        <div className="modal-footer">
-                            <button>Adopt Me!</button>
-                            <button onClick={() => setShow(false)}
-                                show={show}>Close</button>
+                            <div className="modal-footer">
+                                <button>Adopt Me!</button>
+                                <button onClick={() => setShow(false)}
+                                    show={show}>Close</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -37,12 +39,12 @@ function EachDragon({ dragon }) {
     }
 
     return (
-        <div>
+        <div className="eachDragon">
             <div className="simpleStyle" onClick={() => setShow(true)}>
-                <div><h3>{dragon.name}</h3></div>
-                <div><img className="small-image" src={dragon.images} alt={dragon.description} /></div>
-                <div><h4>Artist: {dragon.artist.name}</h4></div>
-                <div><h4 className="price">{dragon.price}</h4></div>
+                <div className='header'><h3>{dragon.name}</h3></div>
+                <div className='simple-body'><img className="small-image" src={dragon.images} alt={dragon.description} />
+                    <h4>Artist: {dragon.artist.name}</h4>
+                    <h4 className="price">{dragon.price}</h4></div>
             </div>
             {dragonModal()}
         </div>

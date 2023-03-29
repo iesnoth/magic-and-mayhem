@@ -10,7 +10,9 @@ function VendorView({ dragon }) {
 
                     <div className="vendor-header">{dragon.name}</div>
                     <section className="vendor-body">
-                        <div>{dragon.images}</div>
+
+                        <div><img src={dragon.images} alt={dragon.description}/></div>
+
                         <div className="sidebar">
                             <div>{dragon.price}</div>
                             <div>{dragon.description}</div>
