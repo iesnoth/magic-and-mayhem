@@ -15,6 +15,30 @@ const createDragon = async (dragonData, token) => {
     return response.data
 }
 
+const buyDragon = async(dragonID, token) => {
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    }
+
+    const response = await axios.put(API_URL + dragonID +'/adopt', config)
+    console.log(`${response} bought`)
+}
+
+// const updateDragon = async (dragonData, dragonID, token) => {
+
+//     const config = {
+//         headers: {
+//             Authorization: `Bearer ${token}`
+//         }
+//     }
+
+//     const response = await axios.put(API_URL + dragonID, dragonData, config)
+
+//     return response.data
+// }
+
 const getMyDragons = async (token) => {
 
     const config = {
@@ -49,6 +73,7 @@ const deleteDragon = async(dragonID, token) => {
 const dragonService = {
     getDragons,
     createDragon,
+    buyDragon,
     getMyDragons,
     deleteDragon
 }

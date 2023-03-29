@@ -49,6 +49,45 @@ export const createDragon = createAsyncThunk(
 
 )
 
+export const buyDragon = createAsyncThunk(
+    'dragons/delete',
+    async (id, thunkAPI) => {
+        try {
+            const token = thunkAPI.getState().auth.user.token
+            return await dragonService.buyDragon(id, token)
+        } catch (error) {
+            const message = 
+                (error.response &&
+                    error.response.data &&
+                    error.response.data.message) ||
+                error.message ||
+                error.toString()
+            return thunkAPI.rejectWithValue(message)
+        }
+    }
+)
+
+//update dragons
+// export const updateDragon = createAsyncThunk(
+//     'dragons/update',
+
+//     async (dragonsData,id, thunkAPI) => {
+//         try {
+//             const token = thunkAPI.getState().auth.user.token
+//             return await dragonService.updateDragon(dragonsData, id, token)
+//         } catch (error) {
+//             const message = 
+//                 (error.response &&
+//                     error.response.data &&
+//                     error.response.data.message) ||
+//                 error.message ||
+//                 error.toString()
+//             return thunkAPI.rejectWithValue(message)
+//         }
+//     }
+
+// )
+
 //get user specific dragons
 
 export const getMyDragons = createAsyncThunk('dragons/getMine', 

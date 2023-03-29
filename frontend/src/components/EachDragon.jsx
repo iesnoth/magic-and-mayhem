@@ -6,10 +6,25 @@
 
 
 import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { toast } from 'react-toastify';
+import { buyDragon } from "../features/dragons/dragonSlice";
 
 function EachDragon({ dragon }) {
     let [show, setShow] = useState(false)
+    const [adopt, setAdopt] = useState({ buyerId: null })
 
+    const { user } = useSelector((state) => state.auth)
+
+    const { buyerId } = adopt
+    const dispatch = useDispatch()
+
+    // const adoptDragon = (event) => {
+    //     event.preventDefault();
+
+    //     dispatch(buyDragon(dragon.pet_uid))
+    //     toast.success('Dragon adopted!')
+    // }
 
     const dragonModal = () => {
         return (
@@ -19,14 +34,14 @@ function EachDragon({ dragon }) {
                         <div className="modal-header">{dragon.name}</div>
                         <section className="modal-body">
                             <div>Artist: {dragon.artist.name}</div>
-                            <div>{dragon.images}</div>
+                            <div><img className="large-image" src={dragon.images} alt={dragon.description} /></div>
                             <div className="sidebar">
                                 <div>{dragon.price}</div>
                                 <div>{dragon.description}</div>
                             </div>
                         </section>
                         <div className="modal-footer">
-                            <button>Adopt Me!</button>
+                            <button onClick={() => setAdopt({ buyerId: user.id })}>Adopt Me!</button>
                             <button onClick={() => setShow(false)}
                                 show={show}>Close</button>
                         </div>
