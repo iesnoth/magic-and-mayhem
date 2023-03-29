@@ -113,6 +113,9 @@ footer #right-dark {
 .dark .link {
   color: #e9e3f0;
 }
+.dark .modal-content {
+  background-color: #3E375F;
+}
 
 .light {
   background-color: #958b9e;
@@ -150,6 +153,9 @@ footer #right-dark {
 }
 .light .link {
   color: #302D3D;
+}
+.light .modal-content {
+  background-color: #E5E0EA;
 }
 
 @media only screen and (min-width: 768px) {
