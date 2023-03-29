@@ -12,6 +12,8 @@ import {createDragon, reset} from '../features/dragons/dragonSlice'
 
 function CreateUpdateDragon() {
 
+const {user} = useSelector((state) => state.auth)
+
 const [formData, setFormData] = useState({
     name: '',
     artist: user.name,
@@ -28,8 +30,6 @@ const dispatch = useDispatch()
 const { dragon, isError, isSuccess, message } = useSelector(
     (state) => state.dragon
     )
-    
-const {user} = useSelector((state) => state.auth)
 
 useEffect(() => {
     if (isError) {
