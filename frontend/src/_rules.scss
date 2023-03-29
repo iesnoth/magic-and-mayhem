@@ -1,0 +1,24 @@
+// Buttons
+@import "./variables.scss";
+
+@mixin button ($color, $hover-color) {
+    color: $color;
+    background: 0 0;
+    font: 11px;
+    font-family: $body-font;
+    letter-spacing: 3px;
+    text-decoration: none;
+    padding: 8px 10px;
+    border: 1px solid $hover-color;
+    float: right;
+    border-radius: 4px;
+    float: left;
+    text-align: center;
+    margin-left: 60px;
+    box-shadow: 5px 5px 5px $color;
+
+    &:hover {
+        background: $color;
+        color: $hover-color;
+    }
+}

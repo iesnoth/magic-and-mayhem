@@ -1,83 +1,147 @@
-@import url('https://fonts.googleapis.com/css2?family=Charm&family=Edu+NSW+ACT+Foundation:wght@500&family=Klee+One:wght@600&family=Shadows+Into+Light&display=swap');
-//scss variables
-//Fonts
-$charm:'Charm',cursive;
-$edu-nsw:'Edu NSW ACT Foundation', cursive;
-$body-font:'Klee One', cursive;
-$shadows:'Shadows Into Light', cursive;
+//font and color variables
+@import "variables.scss";
+@import "rules.scss";
 
-// Light mode
-$primary-light-color:#E5E0EA;
-$secondary-light-color: #958b9e;
-$font-light-color:#302D3D;
-$accent-dark:#ad8200;
-//Dark Mode
-$primary-dark-color:#3E375F;
-$secondary-dark-color: #1a1534;
-$font-dark-color:#e9e3f0;
-$accent-dark:#EEBA1E;
-
-#body{
+#body {
   min-height: 100vh;
-  display:flex;
+  display: flex;
   flex-direction: column;
 }
 
-.navbar {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: auto;
+h1 {
+  font-family: $charm;
 }
 
-.list {
-  list-style: none;
-  margin: 20px;
-
-}
-
-.link {
-  text-decoration: none;
+h2,
+h3 {
   font-family: $body-font;
+}
+
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+}
+
+header {
+  position: sticky;
+  top: 135px;
+  display: flex;
+
+  .header-images {
+    position: absolute;
+    top: -20px;
+    height: 350px;
+  }
+
+  #right-light,
+  #right-dark {
+    right: 0;
+  }
 }
 
 .container {
   text-align: center;
+  margin-top: 3%;
+  margin-left: 7%;
+  margin-right: 7%;
+  margin-bottom: 3%;
+  background-color: beige;
+  padding: 75px;
+  border-radius: 15%;
+
 }
 
-.footer-images{
-  height: auto;
+.gallery {
+  text-align: center;
+  //overflow: scroll;
+
 }
 
-footer{
-  width:100%;
-  height:150px;
-  margin-top: auto;
-  img{
-    z-index:55;
+
+footer {
+  width: 100%;
+  height: 100px;
+  bottom: 0;
+  display: flex;
+  position: sticky;
+  bottom: 0;
+
+  .copyright {
+    position: absolute;
+    left: 40%;
+  }
+
+  .footer-images {
+    position: absolute;
+    bottom: 0;
+    height: 350px;
+  }
+
+  #right-light,
+  #right-dark {
+    right: 0;
+
   }
 }
 
 /* Dark and light themes */
+// DARK THEME
 .dark {
   background-color: $primary-dark-color;
   color: $font-dark-color;
-  .navbar,
-  footer{
-    background-color: $secondary-dark-color;
+
+  button {
+    @include button($font-dark-color, $secondary-dark-color)
   }
-  .link{
-    color:$font-dark-color;
+
+  .eachDragon {
+    background-color: $primary-dark-color;
+    box-shadow: 5px 5px 5px 1px #52487c;
+  }
+
+  .container {
+    background-color: $secondary-dark-color;
+    box-shadow: 10px 20px 10px 5px #52487c;
+  }
+
+  .navbar,
+  footer {
+    background-color: $secondary-dark-color;
+    box-shadow: 10px 5px 10px #302a53;
+  }
+
+  .link {
+    color: $font-dark-color;
   }
 }
 
+// LIGHT THEME
 .light {
-  background-color: $primary-light-color;
+  background-color: $secondary-light-color;
+
+  button {
+    @include button ($secondary-light-color, $font-light-color)
+  }
+
+  .eachDragon {
+    background-color: #d3cbdb;
+    box-shadow: 5px 5px 5px 1px #6e6576;
+  }
+
+  .container {
+    background-color: $primary-light-color;
+    box-shadow: 10px 20px 10px 5px #6e6576;
+  }
+
   .navbar,
-  footer{
+  footer {
+    box-shadow: 10px 10px 10px #786d86;
     background-color: $secondary-light-color;
   }
-  .link{
-    color:$font-light-color;
+
+  .link {
+    color: $font-light-color;
   }
 }
 

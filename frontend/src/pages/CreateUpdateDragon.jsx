@@ -8,6 +8,7 @@ import { createDragon, reset } from '../features/dragons/dragonSlice'
 function CreateUpdateDragon() {
 
     const { user } = useSelector((state) => state.auth)
+
     const [formData, setFormData] = useState({
         name: '',
         artist: user.name,
@@ -24,8 +25,6 @@ function CreateUpdateDragon() {
     const { dragon, isError, isSuccess, message } = useSelector(
         (state) => state.dragons
     )
-
-
 
     useEffect(() => {
         if (isError) {
@@ -48,6 +47,7 @@ function CreateUpdateDragon() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+
 
         if (!images || !price || !description) {
             toast.error('Populate all required fields')

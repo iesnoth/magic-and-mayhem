@@ -1,17 +1,11 @@
-//This Navbar will have:
-// a home button which takes the client to the main gallery page
-// an "FAQ" icon, which goes to the FAQ component
-// a shopping icon which won't go anywhere for a while
-// an account icon, which only shows up when someone is signed in, and takes them to their account page
-// and a sign out/in icon, which changes depending on if the person is signed in/out
-
-//in the mobile version, the navbar will collapse into a hamburger
-
 import React, { useState } from "react";
 import { Link, useMatch, useNavigate, useResolvedPath } from "react-router-dom";
-import { useSelector, useDispatch } from 'react-redux'
-import { logout, reset } from '../features/user/authSlice'
+import { useSelector, useDispatch } from 'react-redux';
+import { logout, reset } from '../features/user/authSlice';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHome, faUser, faArrowCircleRight, faArrowCircleLeft, faDragon, faPenFancy } from "@fortawesome/free-solid-svg-icons";
 import LoginModal from "./LoginModal";
+import './NavBar.scss';
 
 
 function NavBar() {
@@ -28,34 +22,61 @@ function NavBar() {
 
     return (
         <nav>
+
             <ul className="navbar">
-                <li className="list">
-                    <CustomLink className="link" to="/">Home</CustomLink>
-                </li>
-                {user ? (<>
+                <div >
+                    <img className="logo" src={require("../assets/icon.png")} alt="Magic and Mayhem logo" />
+                </div>
+                <div className="welcome">
+                    {user ? (
+                        <h1>Welcome Back to Magic and Mayhem, {user.name}!</h1>
+                    ) : (
+                        <h1>Welcome to Magic and Mayhem</h1>
+                    )}
+                </div>
+                <div className="icons">
                     <li className="list">
-                        <CustomLink className="link" to="/profile">Profile</CustomLink>
+                        <CustomLink className="link" to="/">
+                            <FontAwesomeIcon icon={faHome} size="2x" />
+                        </CustomLink>
                     </li>
-                    <li className="list">
-                        <CustomLink className="link" to="/createdragon">Create Dragon</CustomLink>
-                    </li>
-                    <li className="list">
-                        <CustomLink id="logout" className="link" onClick={onLogout}>Logout</CustomLink>
-                    </li>
-                </>
-                ) : (
-                    <>
+                    {user ? (<>
                         <li className="list">
-                            <CustomLink className="link" to="/signup">Sign up</CustomLink>
+                            <CustomLink className="link" to="/profile">
+                                <FontAwesomeIcon icon={faUser} size="2x" />
+                            </CustomLink>
                         </li>
+                        {/* {user.role === 'vendor' ? (
+                            <li className="list">
+                                <CustomLink className="link" to="/createdragon">
+                                    <FontAwesomeIcon icon={faDragon} size="2x" />
+                                </CustomLink>
+                            </li>)
+                        } */}
                         <li className="list">
-                            <CustomLink className="link" onClick={() => setShow(true)}>Log In</CustomLink>
-                            <LoginModal
-                                onClose={() => setShow(false)}
-                                show={show} />
+                            <CustomLink id="logout" className="link" onClick={onLogout}>
+                                <FontAwesomeIcon icon={faArrowCircleRight} size="2x" />
+                            </CustomLink>
                         </li>
                     </>
-                )}
+                    ) : (
+                        <>
+                            <li className="list">
+                                <CustomLink className="link" to="/signup">
+                                    <FontAwesomeIcon icon={faPenFancy} size="2x" />
+                                </CustomLink>
+                            </li>
+                            <li className="list">
+                                <CustomLink className="link" onClick={() => setShow(true)}>
+                                    <FontAwesomeIcon icon={faArrowCircleLeft} size="2x" />
+                                </CustomLink>
+                                <LoginModal
+                                    onClose={() => setShow(false)}
+                                    show={show} />
+                            </li>
+                        </>
+                    )}
+                </div>
             </ul>
         </nav>
     )

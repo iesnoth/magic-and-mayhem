@@ -1,0 +1,57 @@
+@import url("https://fonts.googleapis.com/css2?family=Charm&family=Edu+NSW+ACT+Foundation:wght@500&family=Klee+One:wght@600&family=Shadows+Into+Light&display=swap");
+.eachDragon {
+  display: flex;
+  width: 500px;
+  height: 700px;
+  background-color: aqua;
+  margin: 15px;
+  border-radius: 10%;
+}
+.eachDragon .simpleStyle {
+  display: block;
+  align-items: center;
+  justify-content: center;
+}
+.eachDragon .simpleStyle .small-image {
+  width: 80%;
+}
+
+.modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+  pointer-events: none;
+}
+
+.modal.show {
+  opacity: 1;
+  pointer-events: visible;
+}
+
+.modal-content {
+  width: 500px;
+  background-color: white;
+}
+
+.modal-header,
+.modal-footer {
+  padding: 10px;
+}
+
+.modal-title {
+  margin: 0;
+}
+
+.modal-body {
+  padding: 10px;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}/*# sourceMappingURL=EachDragon.css.map */

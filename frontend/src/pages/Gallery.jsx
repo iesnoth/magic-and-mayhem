@@ -28,12 +28,7 @@ function Gallery() {
 
             return (
                 <div className="gallery">
-                    <div>
-                        {user ? (
-                            <h1>Welcome Back to Magic and Mayhem, {user.name}!</h1>
-                        ):(
-                            <h1>Welcome to Magic and Mayhem</h1>
-                        )}                     
+                    <div>               
                         <h2>Choose a Dragon!</h2>
                         <section className="content">
                             {dragons.length > 0 ? (
