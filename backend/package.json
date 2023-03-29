@@ -4,11 +4,9 @@
   "description": "dragon adoption site",
   "main": "index.js",
   "scripts": {
-
     "dev": "nodemon index",
     "start": "node index",
     "test": "echo 'Error: no test specified' && exit 1"
-
   },
   "author": "iesnoth",
   "license": "ISC",
@@ -19,6 +17,7 @@
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "express-async-handler": "^1.2.0",
+    "http-proxy-middleware": "^2.0.6",
     "jsonwebtoken": "^9.0.0",
     "path": "^0.12.7",
     "pg": "^8.10.0",
