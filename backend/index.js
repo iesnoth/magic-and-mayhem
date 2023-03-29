@@ -19,8 +19,8 @@ if (process.env.NODE_ENV === "production") {
 const { errorHandler } = require('./middleware/errMiddleware')
 
 //ROUTES FOR USER
-app.use('/users', require('./routes/userRoutes'))
-app.use('/dragons',require('./routes/dragonRoutes'))
+app.use('/api/users', require('./routes/userRoutes'))
+app.use('/api/dragons', require('./routes/dragonRoutes'))
 
 //Set the app to use our errorHandler
 app.use(errorHandler)

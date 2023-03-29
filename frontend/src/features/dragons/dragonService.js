@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API_URL = '/dragons/'
+const API_URL = '/api/dragons/'
 
 const createDragon = async (dragonData, token) => {
 
