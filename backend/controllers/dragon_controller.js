@@ -105,7 +105,6 @@ const adoptADragon = asyncHandler(async (req, res) => {
     const user = req.user
     const buyerId = user.id
     const pet_uid = req.params.uuid
-    //const { buyerId } = req.body
     try {
         await Pet.update(
             {
