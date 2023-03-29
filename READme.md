@@ -1,13 +1,33 @@
 # Magic and Mayhem: Adoption Agency
 
+## Deployment
+
+### AWS
+We attempted to deploy on Elastic Beanstalk, and while it did send information to the backend at one point, it could not receive it to the front end.
+This will be fixed in future.
+*Current Deployment*: http://magicandmayhem-env.eba-2g3y7xfa.us-east-1.elasticbeanstalk.com/
+
+### Locally
+
+Root:
+- npm install
+
+Backend:
+- npm install
+- nodemon index
+
+Frontend:
+- npm install
+- npm start
+
+NOTE: must have nodemon and sequelize to run
+
 ## Summary
 Have you ever wanted a pet dragon?
 Bad question, everyone has.
 Have you ever wanted a one-of-a-kind dragon character that you have the rights to? Are you not an artist, or want to support artists?
 If so, you'll love Magic and Mayhem, a site where artists can sell unique dragon designs for fellow creatives and collectors to use.
 The heart and goal of this project is to lift up and protect artists, as well as have some fun.
-
-## Table of Contents
 
 ## Description
 
@@ -61,6 +81,7 @@ This will have several benefits:
 ### Contributors
 - Victoria Beasley
 - George Henderson
+- JD Howell (deployment consultation)
 
 ### Citations
 1. "Material UI React Tutorial" from Traversy Media: https://www.youtube.com/watch?v=vyJU9efvUtQ
@@ -70,3 +91,4 @@ This will have several benefits:
 5. SO MUCH Sequelize documentation, but specifically about associations and functions. https://sequelize.org/docs/v6/getting-started/
 6. Code reference from our last group project, Squatch Watch. https://github.com/johncapovani/Squatch-Watch
 7. "CSS Position Sticky - How It Really Works!" by Elad Shechter: https://elad.medium.com/css-position-sticky-how-it-really-works-54cd01dc2d46
+8. "A Complete Guide to Flexbox " by Chris Coyler: https://css-tricks.com/snippets/css/a-guide-to-flexbox/
