@@ -11,7 +11,6 @@ function Gallery() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const { dragons, isError, isLoading, message } = useSelector((state) => state.dragons)
-    const {user} = useSelector((state)=>state.auth)
 
     useEffect(() => {
                 if (isError) {

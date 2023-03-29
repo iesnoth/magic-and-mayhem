@@ -15,9 +15,25 @@ h3 {
   font-family: "Klee One", cursive;
 }
 
-.navbar {
+nav {
   position: sticky;
   top: 0;
+  z-index: 40;
+}
+
+header {
+  position: sticky;
+  top: 135px;
+  display: flex;
+}
+header .header-images {
+  position: absolute;
+  top: -20px;
+  height: 350px;
+}
+header #right-light,
+header #right-dark {
+  right: 0;
 }
 
 .container {
@@ -40,15 +56,21 @@ footer {
   height: 100px;
   bottom: 0;
   display: flex;
+  position: sticky;
+  bottom: 0;
+}
+footer .copyright {
+  position: absolute;
+  left: 40%;
 }
 footer .footer-images {
+  position: absolute;
+  bottom: 0;
   height: 350px;
 }
-footer #left-light {
-  justify-content: flex-start;
-}
-footer #right-light {
-  justify-content: flex-end;
+footer #right-light,
+footer #right-dark {
+  right: 0;
 }
 
 /* Dark and light themes */
@@ -76,13 +98,18 @@ footer #right-light {
   background: #e9e3f0;
   color: #1a1534;
 }
+.dark .eachDragon {
+  background-color: #3E375F;
+  box-shadow: 5px 5px 5px 1px #52487c;
+}
 .dark .container {
   background-color: #1a1534;
-  box-shadow: 10px 20px 10px 5px #53487c;
+  box-shadow: 10px 20px 10px 5px #52487c;
 }
 .dark .navbar,
 .dark footer {
   background-color: #1a1534;
+  box-shadow: 10px 5px 10px #302a53;
 }
 .dark .link {
   color: #e9e3f0;
@@ -111,12 +138,17 @@ footer #right-light {
   background: #958b9e;
   color: #302D3D;
 }
+.light .eachDragon {
+  background-color: #d3cbdb;
+  box-shadow: 5px 5px 5px 1px #6e6576;
+}
 .light .container {
   background-color: #E5E0EA;
   box-shadow: 10px 20px 10px 5px #6e6576;
 }
 .light .navbar,
 .light footer {
+  box-shadow: 10px 10px 10px #786d86;
   background-color: #958b9e;
 }
 .light .link {

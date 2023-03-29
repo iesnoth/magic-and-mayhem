@@ -1,5 +1,27 @@
 # Magic and Mayhem: Adoption Agency
 
+## Deployment
+
+### AWS
+We attempted to deploy on Elastic Beanstalk, and while it did send information to the backend at one point, it could not receive it to the front end.
+This will be fixed in future.
+*Current Deployment*: http://magicandmayhem-env.eba-2g3y7xfa.us-east-1.elasticbeanstalk.com/
+
+### Locally
+
+Root:
+- npm install
+
+Backend:
+- npm install
+- nodemon index
+
+Frontend:
+- npm install
+- npm start
+
+NOTE: must have nodemon, sequelize to run
+
 ## Summary
 Have you ever wanted a pet dragon?
 Bad question, everyone has.
