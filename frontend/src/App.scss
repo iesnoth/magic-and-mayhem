@@ -67,8 +67,8 @@ footer {
   bottom: 0;
 
   .copyright {
-    position:absolute;
-    left:40%;
+    position: absolute;
+    left: 40%;
   }
 
   .footer-images {
@@ -84,12 +84,18 @@ footer {
 }
 
 /* Dark and light themes */
+// DARK THEME
 .dark {
   background-color: $primary-dark-color;
   color: $font-dark-color;
 
   button {
     @include button($font-dark-color, $secondary-dark-color)
+  }
+
+  .eachDragon {
+    background-color: $primary-dark-color;
+    box-shadow: 5px 5px 5px 1px #52487c;
   }
 
   .container {
@@ -108,11 +114,17 @@ footer {
   }
 }
 
+// LIGHT THEME
 .light {
   background-color: $secondary-light-color;
 
   button {
     @include button ($secondary-light-color, $font-light-color)
+  }
+
+  .eachDragon {
+    background-color: #d3cbdb;
+    box-shadow: 5px 5px 5px 1px #6e6576;
   }
 
   .container {

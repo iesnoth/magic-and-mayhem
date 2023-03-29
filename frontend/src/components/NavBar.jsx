@@ -46,11 +46,13 @@ function NavBar() {
                                 <FontAwesomeIcon icon={faUser} size="2x" />
                             </CustomLink>
                         </li>
-                        <li className="list">
-                            <CustomLink className="link" to="/createdragon">
-                                <FontAwesomeIcon icon={faDragon} size="2x" />
-                            </CustomLink>
-                        </li>
+                        {/* {user.role === 'vendor' ? (
+                            <li className="list">
+                                <CustomLink className="link" to="/createdragon">
+                                    <FontAwesomeIcon icon={faDragon} size="2x" />
+                                </CustomLink>
+                            </li>)
+                        } */}
                         <li className="list">
                             <CustomLink id="logout" className="link" onClick={onLogout}>
                                 <FontAwesomeIcon icon={faArrowCircleRight} size="2x" />

@@ -1,10 +1,11 @@
 @import "../variables.scss";
 
+
+//SIMPLE STYLE
 .eachDragon {
     display: flex;
     width: 500px;
     height: 700px;
-    background-color: aqua;
     margin: 15px;
     border-radius: 10%;
 
@@ -20,7 +21,7 @@
 }
 
 
-
+//DRAGON MODAL
 .modal {
     position: fixed;
     left: 0;
@@ -42,21 +43,13 @@
 }
 
 .modal-content {
-    width: 500px;
+    width: auto;
     background-color: white;
+    display:flex;
+    border-radius: 15px;
 }
 
 .modal-header,
 .modal-footer {
     padding: 10px
-}
-
-.modal-title {
-    margin: 0;
-}
-
-.modal-body {
-    padding: 10px;
-    border-top: 1px solid #eee;
-    border-bottom: 1px solid #eee;
 }
