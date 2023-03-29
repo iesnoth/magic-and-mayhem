@@ -39,24 +39,25 @@ function App() {
           </Routes>
           <ToastContainer />
         </div>
-        <div className="footer-images">
-          {{ theme } === 'light' ? (
-            <>
-              <div className="light">
-                <img src="../assets/leftlightfooter.png" alt="left footer stalagmite" />
-                <img src="../assets/rightlightfoot.png" alt="right footer stagamite" />
-              </div>
-            </>
-          ) : (
-            <>
-              <div className="dark">
-                <img src="../assets/leftdrkfoot.png" alt="left footer stalagmite" />
-                <img src="../assets/rightdarkfoot.png" alt="right footer stagamite" />
-              </div>
-            </>
-          )}
+        <footer className="footer">
+          <div className="footer-images">
+            {{ theme } === 'light' ? (
+              <>
+                <div className="light">
+                  <img src={require("./assets/leftlightfooter.png")} alt="left footer stalagmite" />
+                  <img src={require("./assets/rightlightfoot.png")} alt="right footer stagamite" />
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="dark">
+                  <img src={require("./assets/leftdrkfoot.png")} alt="left footer stalagmite" />
+                  <img src={require("./assets/rightdarkfoot.png")} alt="right footer stagamite" />
+                </div>
+              </>
+            )}
           </div>
-        <footer className="footer"></footer>
+        </footer>
       </div>
     </>
   );

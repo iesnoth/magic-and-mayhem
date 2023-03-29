@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API_URL = '/dragons/'
+const API_URL = 'dragons/'
 
 const createDragon = async (dragonData, token) => {
 
@@ -35,7 +35,7 @@ const getDragons = async () => {
     return response.data
 }
 
-const deleteDragon = async(dragonID, token) => {
+const deleteDragon = async (dragonID, token) => {
     const config = {
         headers: {
             Authorization: `Bearer ${token}`

@@ -10,19 +10,28 @@
 import React, { useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux'
+import VendorView from "../components/VendorView";
+import { getMyDragons, reset } from "../features/dragons/dragonSlice";
 
 function VenderProfile() {
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
     const { user } = useSelector((state) => state.auth)
+    const { dragons, isError, isLoading, message } = useSelector((state) => state.dragons)
 
     useEffect(() => {
-        // if (isError) {
-        //     console.log(message)
-        // }
+        if (isError) {
+            console.log(message)
+        }
         if (!user) {
             navigate('/')
+        }
+
+        dispatch(getMyDragons())
+
+        return () => {
+            dispatch(reset)
         }
     }, [user])
 
@@ -40,10 +49,23 @@ function VenderProfile() {
                         <p>You are a buyer</p>
 
                     </>) : (<>
-                        <p>You are a vendor</p>
-                        <p>Here are the dragons you are selling.</p>
+                        <section>
+                            <h3>Here are the dragons you are selling:</h3>
+                            {dragons.length > 0 ? (
+                                <ul className="cards">
+                                    {dragons.map((dragons) => (
+                                        <VendorView key={dragons.pet_uid} dragon={dragons} />
+                                    ))}
+                                </ul>
+                            ):(
+                                <h3>You are not currently selling any dragons. Shame on you.</h3>
+                            )}
+                        </section>
                     </>)}
-                <p>Here are the dragons you have bought</p>
+                    {/* Adopted dragons section */}
+                <section>
+                    
+                </section>
             </div>
         </>
     )

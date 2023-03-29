@@ -1,103 +1,98 @@
-//This page will take all info on a dragon and send it to the dragons db.
-//Form will include the name of the dragon(if applicable), name of artist, color of dragon, style of dragon (a dropdown list),
-//images, price, and a short description of the dragon
-//After being submitted, the dragon is turned into an EachDragon component and sent to the Gallery and the vender's account page.
-
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
 import { useSelector, useDispatch } from 'react-redux';
-import {createDragon, reset} from '../features/dragons/dragonSlice'
+import { createDragon, reset } from '../features/dragons/dragonSlice'
 
 
 function CreateUpdateDragon() {
 
-const [formData, setFormData] = useState({
-    name: '',
-    artist: user.name,
-    images: '',
-    price: '',
-    description: '',
-})
+    const { user } = useSelector((state) => state.auth)
+    const [formData, setFormData] = useState({
+        name: '',
+        artist: user.name,
+        images: '',
+        price: '',
+        description: '',
+    })
 
-const { name, artist, images, price, description } = formData
+    const { name, artist, images, price, description } = formData
 
-const navigate = useNavigate()
-const dispatch = useDispatch()
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
 
-const { dragon, isError, isSuccess, message } = useSelector(
-    (state) => state.dragon
+    const { dragon, isError, isSuccess, message } = useSelector(
+        (state) => state.dragons
     )
-    
-const {user} = useSelector((state) => state.auth)
 
-useEffect(() => {
-    if (isError) {
-        toast.error(message)
+
+
+    useEffect(() => {
+        if (isError) {
+            toast.error(message)
+        }
+
+        if (isSuccess || dragon) {
+
+        }
+
+        dispatch(reset())
+    }, [dragon, isError, isSuccess, message, navigate, dispatch])
+
+    const onChange = (e) => {
+        setFormData((prevState) => ({
+            ...prevState,
+            [e.target.name]: e.target.value,
+        }))
     }
 
-    if (isSuccess || dragon) {
+    const handleSubmit = (event) => {
+        event.preventDefault();
 
+        if (!images || !price || !description) {
+            toast.error('Populate all required fields')
+        } else {
+            const dragonData = {
+                name, artist, images, price, description
+            }
+
+            dispatch(createDragon(dragonData))
+            toast.success('New Dragon successfully added!')
+            navigate('/')
+        }
     }
-
-    dispatch(reset())
-}, [dragon, isError, isSuccess, message, navigate, dispatch])
-
-const onChange = (e) => {
-    setFormData((prevState) => ({
-        ...prevState,
-        [e.target.name]: e.target.value,
-    }))
-}
-
-const handleSubmit = (event) => {
-    event.preventDefault();
-}
-
-if ( !images || !price || !description) {
-    toast.error('Populate all required fields')
-} else {
-    const dragonData = {
-        name, artist, images, price, description
-    }
-
-    dispatch(createDragon(dragonData))
-    toast.success('New Dragon successfully added!')
-    navigate('/')
-}
-
 
     return (
-          <>
-          <div>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <h1>Add your Dragon</h1>
+        <>
+            <div>
+                <form onSubmit={handleSubmit}>
                     <div>
-                        <label htmlFor="nameDragon">Name of dragon</label>
-                        <input id="name" type="text" name="name" value={name} onChange={onChange}  />
-                    </div>
-                    <div>
-                        <label htmlFor="images">Image</label>
-                        <input id="image-url" type="text" name="images" value={images} onChange={onChange} />
-                    </div>
-                    <div>
-                        <label htmlFor="price">Price</label>
-                        <input type="number" id="price" name="price" value={price} onChange={onChange} />
-                    </div>
-                    <div>
-                        <label htmlFor="DragonDetails">Dragon Details</label>
+                        <h1>Add your Dragon</h1>
                         <div>
-                            <textarea placeholder="Describe your Dragon" rows="5" name="description" value={description} onChange={onChange} ></textarea>
+                            <label htmlFor="nameDragon">Name of dragon</label>
+                            <input id="name" type="text" name="name" value={name} onChange={onChange} />
                         </div>
+                        <div>
+                            <label htmlFor="images">Image</label>
+                            <input id="image-url" type="text" name="images" value={images} onChange={onChange} />
+                        </div>
+                        <div>
+                            <label htmlFor="price">Price</label>
+                            <input type="number" id="price" name="price" value={price} onChange={onChange} />
+                        </div>
+                        <div>
+                            <label htmlFor="DragonDetails">Dragon Details</label>
+                            <div>
+                                <textarea placeholder="Describe your Dragon" rows="5" name="description" value={description} onChange={onChange} ></textarea>
+                            </div>
+                        </div>
+                        <button className="dragonbutton" type="submit">Add your Dragon!</button>
                     </div>
-                    <button className="dragonbutton" type="submit">Add your Dragon!</button>
-                </div>
-            </form>
-          </div>
-          </>
+                </form>
+            </div>
+        </>
     )
-    
+
 }
 
 export default CreateUpdateDragon;
