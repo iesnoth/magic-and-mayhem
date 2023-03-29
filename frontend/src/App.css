@@ -42,7 +42,6 @@ header #right-dark {
   margin-left: 7%;
   margin-right: 7%;
   margin-bottom: 3%;
-  background-color: beige;
   padding: 75px;
   border-radius: 15%;
 }
@@ -87,9 +86,7 @@ footer #right-dark {
   text-decoration: none;
   padding: 8px 10px;
   border: 1px solid #1a1534;
-  float: right;
   border-radius: 4px;
-  float: left;
   text-align: center;
   margin-left: 60px;
   box-shadow: 5px 5px 5px #e9e3f0;
@@ -127,9 +124,7 @@ footer #right-dark {
   text-decoration: none;
   padding: 8px 10px;
   border: 1px solid #302D3D;
-  float: right;
   border-radius: 4px;
-  float: left;
   text-align: center;
   margin-left: 60px;
   box-shadow: 5px 5px 5px #958b9e;
