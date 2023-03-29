@@ -46,8 +46,8 @@ header #right-dark {
   border-radius: 15%;
 }
 
-.gallery {
-  text-align: center;
+.dragons {
+  display: flex;
 }
 
 footer {
