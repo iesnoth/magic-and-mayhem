@@ -22,7 +22,10 @@ h3 {
 
 .container {
   text-align: center;
-  margin: 3%;
+  margin-top: 3%;
+  margin-left: 7%;
+  margin-right: 7%;
+  margin-bottom: 3%;
   background-color: beige;
   padding: 75px;
   border-radius: 15%;
@@ -32,22 +35,25 @@ h3 {
   text-align: center;
 }
 
-.footer-images {
-  height: auto;
-}
-
 footer {
   width: 100%;
   height: 100px;
-  margin-top: auto;
+  bottom: 0;
+  display: flex;
 }
-footer img {
-  z-index: 55;
+footer .footer-images {
+  height: 350px;
+}
+footer #left-light {
+  justify-content: flex-start;
+}
+footer #right-light {
+  justify-content: flex-end;
 }
 
 /* Dark and light themes */
 .dark {
-  background-color: #1a1534;
+  background-color: #3E375F;
   color: #e9e3f0;
 }
 .dark button {
@@ -64,13 +70,15 @@ footer img {
   float: left;
   text-align: center;
   margin-left: 60px;
+  box-shadow: 5px 5px 5px #e9e3f0;
 }
 .dark button:hover {
   background: #e9e3f0;
   color: #1a1534;
 }
 .dark .container {
-  background-color: #3E375F;
+  background-color: #1a1534;
+  box-shadow: 10px 20px 10px 5px #53487c;
 }
 .dark .navbar,
 .dark footer {
@@ -97,6 +105,7 @@ footer img {
   float: left;
   text-align: center;
   margin-left: 60px;
+  box-shadow: 5px 5px 5px #958b9e;
 }
 .light button:hover {
   background: #958b9e;
@@ -104,6 +113,7 @@ footer img {
 }
 .light .container {
   background-color: #E5E0EA;
+  box-shadow: 10px 20px 10px 5px #6e6576;
 }
 .light .navbar,
 .light footer {

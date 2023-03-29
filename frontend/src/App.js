@@ -28,7 +28,24 @@ function App() {
   return (
     <>
       <div id="body" className={`App ${theme}`}>
-        <NavBar />
+          <NavBar />
+          <header>
+            {theme === 'dark' ? (
+              <>
+                <div className="dark">
+                  <img className="header-images" id="left-dark" src={require("./assets/leftdarkheader.png")} alt="left footer stalagmite" />
+                  <img className="header-images" id="right-dark" src={require("./assets/rightdarkheader.png")} alt="right footer stagamite" />
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="light">
+                  <img className="header-images" id="left-light" src={require("./assets/leftlightheader.png")} alt="left footer stalagmite" />
+                  <img className="header-images" id="right-light" src={require("./assets/rightlightheader.png")} alt="right footer stagamite" />
+                </div>
+              </>
+            )}
+          </header>
         <div className="container">
           <button onClick={toggleTheme}>Toggle Theme</button>
           <Routes>
@@ -39,24 +56,26 @@ function App() {
           </Routes>
           <ToastContainer />
         </div>
-        <div className="footer-images">
-          {{ theme } === 'light' ? (
+        <footer>
+          {theme === 'dark' ? (
             <>
-              <div className="light">
-                <img src={require("./assets/leftlightfooter.png")} alt="left footer stalagmite" />
-                <img src={require("./assets/rightlightfoot.png")} alt="right footer stagamite" />
+              <div className="dark">
+                <img className="footer-images" id="left-dark" src={require("./assets/leftdrkfoot.png")} alt="left footer stalagmite" />
+                <img className="footer-images" id="right-dark" src={require("./assets/rightdarkfoot.png")} alt="right footer stagamite" />
               </div>
             </>
           ) : (
             <>
-              <div className="dark">
-                <img src={require("./assets/leftdrkfoot.png")} alt="left footer stalagmite" />
-                <img src={require("./assets/rightdarkfoot.png")} alt="right footer stagamite" />
+              <div className="light">
+                <img className="footer-images" id="left-light" src={require("./assets/leftlightfooter.png")} alt="left footer stalagmite" />
+                <img className="footer-images" id="right-light" src={require("./assets/rightlightfoot.png")} alt="right footer stagamite" />
               </div>
             </>
           )}
-          </div>
-        <footer className="footer"></footer>
+          <p className='copyright'>
+                &copy; {new Date().getFullYear()} | Magic and Mayhem Adoptions | All rights reserved
+            </p>
+        </footer>
       </div>
     </>
   );
