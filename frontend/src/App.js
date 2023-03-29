@@ -38,7 +38,6 @@ function App() {
             <Route path="/createdragon" element={<CreateUpdateDragon />} />
           </Routes>
           <ToastContainer />
-          {/* <img src={require("./assets/leftlightfooter.png")} alt="left footer stalagmite" /> */}
         </div>
         <footer className="footer">
           <div className="footer-images">
