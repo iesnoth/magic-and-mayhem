@@ -121,7 +121,7 @@ footer {
   background-color: $secondary-light-color;
 
   button {
-    @include button ($secondary-light-color, $font-light-color)
+    @include button ($font-light-color, $font-light-color)
   }
 
   .eachDragon {

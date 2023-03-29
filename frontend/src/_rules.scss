@@ -2,7 +2,6 @@
 @import "./variables.scss";
 
 @mixin button ($color, $hover-color) {
-    color: $color;
     background: 0 0;
     font: 11px;
     font-family: $body-font;
@@ -16,6 +15,9 @@
     text-align: center;
     margin-left: 60px;
     box-shadow: 5px 5px 5px $color;
+    text-transform: uppercase;
+    font-weight: bolder;
+    color: $color;
 
     &:hover {
         background: $color;
