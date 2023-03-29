@@ -35,6 +35,10 @@ function Gallery() {
                             <h1>Welcome to Magic and Mayhem</h1>
                         )}                     
                         <h2>Choose a Dragon!</h2>
+                        <div>
+                            {/* Test image */}
+                            <img src={require("../assets/leftlightfooter.png")} alt="left footer stalagmite" />
+                        </div>
                         <section className="content">
                             {dragons.length > 0 ? (
                                 <div className="dragons">

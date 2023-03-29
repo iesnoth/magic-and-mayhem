@@ -5,6 +5,7 @@ import Gallery from "./pages/Gallery";
 import VenderProfile from "./pages/VenderProfile";
 import SignUp from "./pages/SignUp";
 import CreateUpdateDragon from "./pages/CreateUpdateDragon";
+//import Footer from "./components/Footer";
 import { Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'
@@ -43,20 +44,22 @@ function App() {
           {{ theme } === 'light' ? (
             <>
               <div className="light">
-                <img src="../assets/leftlightfooter.png" alt="left footer stalagmite" />
-                <img src="../assets/rightlightfoot.png" alt="right footer stagamite" />
+                <img src={require("../assets/leftlightfooter.png")} alt="left footer stalagmite" />
+                <img src="./assets/rightlightfoot.png" alt="right footer stagamite" />
               </div>
             </>
           ) : (
             <>
               <div className="dark">
-                <img src="../assets/leftdrkfoot.png" alt="left footer stalagmite" />
-                <img src="../assets/rightdarkfoot.png" alt="right footer stagamite" />
+                <img src="./assets/leftdrkfoot.png" alt="left footer stalagmite" />
+                <img src="./assets/rightdarkfoot.png" alt="right footer stagamite" />
               </div>
             </>
           )}
-          </div>
-        <footer className="footer"></footer>
+        </div>
+        <footer className="footer">
+          <img src="./assets/leftlightfooter.png" alt="cat" />
+        </footer>
       </div>
     </>
   );

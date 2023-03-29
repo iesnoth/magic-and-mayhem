@@ -7,8 +7,8 @@
 
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { toast } from 'react-toastify';
-import { buyDragon } from "../features/dragons/dragonSlice";
+//import { toast } from 'react-toastify';
+//import { buyDragon } from "../features/dragons/dragonSlice";
 
 function EachDragon({ dragon }) {
     let [show, setShow] = useState(false)
@@ -16,8 +16,8 @@ function EachDragon({ dragon }) {
 
     const { user } = useSelector((state) => state.auth)
 
-    const { buyerId } = adopt
-    const dispatch = useDispatch()
+    //const { buyerId } = adopt
+    //const dispatch = useDispatch()
 
     // const adoptDragon = (event) => {
     //     event.preventDefault();
