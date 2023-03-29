@@ -133,7 +133,7 @@ function SignUp() {
             <section>
                 <br></br>
                 <p>Already have an account with us?</p>
-                <button onClick={() => setShow(true)}>Log In</button>
+                <button className="lgbutton" onClick={() => setShow(true)}>Log In</button>
                 <LoginModal
                     onClose={() => setShow(false)}
                     show={show} />

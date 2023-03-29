@@ -123,6 +123,12 @@ footer #right-light {
   color: #302D3D;
 }
 
+.toggle {
+  text-transform: uppercase;
+  font-weight: bolder;
+  color: #1a1534;
+}
+
 @media only screen and (min-width: 768px) {
   .navbar {
     display: flex;
