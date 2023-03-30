@@ -22,6 +22,12 @@ Frontend:
 
 NOTE: must have nodemon and sequelize to run
 
+## API
+The RESTful API connects to 2 tables through:
+- /api/users/
+- /api/dragons/
+All the routes in the routes folder which take the "protect" middleware need JWT token authentication
+
 ## Summary
 Have you ever wanted a pet dragon?
 Bad question, everyone has.
@@ -74,6 +80,7 @@ This will have several benefits:
 - bcrypt
 - Sass
 - Axios
+- JWT
 
 ### Stretch goals
 - Functional payment page
