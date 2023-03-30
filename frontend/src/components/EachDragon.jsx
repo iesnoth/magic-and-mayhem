@@ -17,7 +17,7 @@ function EachDragon({ dragon }) {
                 <div className={`modal ${show ? 'show' : ''}`}>
                     <div className="modal-content">
                         <div className="modal-left">
-                            <div><img src={dragon.images} alt={dragon.description} /></div>
+                            <div><img className="modal-image" src={dragon.images} alt={dragon.description} /></div>
                             <h1>{dragon.name}</h1>
                         </div>
                         <div className='modal-right'>
