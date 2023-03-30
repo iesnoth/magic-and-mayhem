@@ -79,6 +79,11 @@ function NavBar() {
                         </>
                     )}
                 </div>
+                <div className="hamburger">
+                    <span className="bar"></span>
+                    <span className="bar"></span>
+                    <span className="bar"></span>
+                </div>
             </ul>
         </nav>
     )

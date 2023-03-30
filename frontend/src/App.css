@@ -164,10 +164,56 @@ footer #right-dark {
   color: #1a1534;
 }
 
+.hamburger {
+  display: none;
+  cursor: pointer;
+}
+
+.bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  background-color: white;
+}
+
 @media only screen and (min-width: 768px) {
-  .navbar {
-    display: flex;
+  .hamburger {
+    display: block;
   }
 
+  .hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .hamburger.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
   
+  .navbar {
+    position: fixed;
+    left: -100%;
+    top: 70px;
+    gap: 0;
+    flex-direction: column;
+    background-color: black;
+    width: 100%;
+    text-align: center;
+    transition: 0.3s;
+  }
+
+  .list {
+    margin: 16px 0;
+  }
+
+  .navbar.activate {
+    left: 0;
+  }
+
 }/*# sourceMappingURL=App.css.map */
