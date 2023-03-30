@@ -67,11 +67,13 @@ This will have several benefits:
 ### Technologies
 - VSCode
 - React
+- Redux toolkit
 - PostgresSQL
 - Express
 - Node.js
 - bcrypt
-- Material UI
+- Sass
+- Axios
 
 ### Stretch goals
 - Functional payment page

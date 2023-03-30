@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { createUser, reset } from '../features/user/authSlice'
+import './SignUp.css'
 
 function SignUp() {
     const [show, setShow] = useState(false)
@@ -115,7 +116,7 @@ function SignUp() {
                     </div>
                     <div className="form-input">
                         <label for="role">Why are you here?</label>
-                        <select name="role" id="role" value={role} onChange={onChange} required>
+                        <select name="role" id="role" value={role} className="select-1" onChange={onChange} required>
                             <option value="" disabled selected hidden>That's a loaded question</option>
                             <option value="buyer">To adopt</option>
                             <option value="vendor">To sell</option>
@@ -123,16 +124,16 @@ function SignUp() {
                         </select>
                     </div>
                     <div className="form-group">
-                        <button type="submit">
+                        <button type="submit" className="submit-1">
                             Submit
                         </button>
                     </div>
                 </form>
             </section>
-            <section>
+            <section className="lgbutton">
                 <br></br>
                 <p>Already have an account with us?</p>
-                <button onClick={() => setShow(true)}>Log In</button>
+                <button  onClick={() => setShow(true)}>Log In</button>
                 <LoginModal
                     onClose={() => setShow(false)}
                     show={show} />

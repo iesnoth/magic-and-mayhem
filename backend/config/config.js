@@ -1,9 +1,9 @@
 require('dotenv').config();
 module.exports = {
   "development": {
-    "username": "postgres",
-    "password": "postgres",
-    "database": "old_magic_and_mayhem",
+    "username": process.env.PG_USER,
+    "password": process.env.PG_PASSWORD,
+    "database": process.env.PG_DATABASE,
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
@@ -19,8 +19,8 @@ module.exports = {
     "password": process.env.RDS_PASSWORD,
     "database": process.env.RDS_DB_NAME,
     "host": process.env.RDS_HOSTNAME,
-    "port":process.env.RDS_PORT,
+    "port": process.env.RDS_PORT,
     "dialect": "postgres"
-},
+  },
 
 }

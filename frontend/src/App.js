@@ -47,7 +47,7 @@ function App() {
             )}
           </header>
         <div className="container">
-          <button onClick={toggleTheme}>Toggle Theme</button>
+          <button className="toggle" onClick={toggleTheme}>Toggle Theme</button>
           <Routes>
             <Route path="/" element={<Gallery />} />
             <Route path="/profile" element={<VenderProfile />} />
